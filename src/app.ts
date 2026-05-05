@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -14,11 +15,14 @@ import escalationPolicyRoutes from './routes/escalation-policies';
 import alertRuleRoutes from './routes/alert-rules';
 import statusPageRoutes from './routes/status-pages';
 import webhookRoutes from './routes/webhooks';
+import dashboardRoutes from './routes/dashboard';
 
 export function createApp() {
   const app = express();
 
-  app.use(helmet());
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
   app.use(cors());
   app.use(express.json({ limit: '1mb' }));
 
@@ -49,8 +53,18 @@ export function createApp() {
   app.use('/api/alert-rules', alertRuleRoutes);
   app.use('/api/status-pages', statusPageRoutes);
   app.use('/api/webhooks', webhookRoutes);
+  app.use('/api/dashboard', dashboardRoutes);
 
-  app.use((_req, res) => {
+  // Serve static dashboard UI
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  // SPA fallback - serve index.html for root
+  app.get('/', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+
+  // 404 for unmatched API routes
+  app.use('/api/*', (_req, res) => {
     res.status(404).json({ error: 'Not found' });
   });
 
