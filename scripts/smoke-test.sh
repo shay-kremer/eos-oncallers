@@ -93,6 +93,90 @@ if [[ -n "$TOKEN" ]]; then
   fi
 fi
 
+# ── 6. Users API ─────────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  USERS=$(curl -sf "${BASE_URL}/api/users" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$USERS" | grep -q email; then
+    USER_COUNT=$(echo "$USERS" | grep -o email | wc -l | tr -d " ")
+    pass "Users API: ${USER_COUNT} users returned with email field"
+  else
+    fail_test "Users API: no users returned (response: ${USERS:-empty})"
+  fi
+
+  if echo "$USERS" | grep -q teams; then
+    pass "Users API: includes team memberships"
+  else
+    fail_test "Users API: missing teams field"
+  fi
+
+  if echo "$USERS" | grep -q hasPhone; then
+    pass "Users API: masks phone (shows hasPhone indicator)"
+  else
+    fail_test "Users API: missing hasPhone indicator"
+  fi
+fi
+
+# ── 7. Schedules API ────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  SCHEDS=$(curl -sf "${BASE_URL}/api/schedules" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$SCHEDS" | grep -q layers; then
+    SCHED_COUNT=$(echo "$SCHEDS" | grep -o name | wc -l | tr -d " ")
+    pass "Schedules API: returned schedules with layers (${SCHED_COUNT} name fields)"
+  else
+    fail_test "Schedules API: no schedules with layers (response: ${SCHEDS:-empty})"
+  fi
+
+  if echo "$SCHEDS" | grep -q currentOnCall; then
+    pass "Schedules API: includes currentOnCall computation"
+  else
+    fail_test "Schedules API: missing currentOnCall field"
+  fi
+fi
+
+# ── 8. Dashboard UI markers ─────────────────────────────
+DASH_HTML=$(curl -sf "${BASE_URL}/" 2>/dev/null || echo "")
+
+if echo "$DASH_HTML" | grep -q tab-users; then
+  pass "Dashboard HTML: has Users tab marker"
+else
+  fail_test "Dashboard HTML: missing tab-users marker"
+fi
+
+if echo "$DASH_HTML" | grep -q tab-schedules; then
+  pass "Dashboard HTML: has Schedules tab marker"
+else
+  fail_test "Dashboard HTML: missing tab-schedules marker"
+fi
+
+if echo "$DASH_HTML" | grep -q panel-users; then
+  pass "Dashboard HTML: has Users panel"
+else
+  fail_test "Dashboard HTML: missing panel-users"
+fi
+
+if echo "$DASH_HTML" | grep -q schedules-list; then
+  pass "Dashboard HTML: has Schedules list"
+else
+  fail_test "Dashboard HTML: missing schedules-list"
+fi
+
+if echo "$DASH_HTML" | grep -q loadUsers; then
+  pass "Dashboard JS: has loadUsers function"
+else
+  fail_test "Dashboard JS: missing loadUsers function"
+fi
+
+if echo "$DASH_HTML" | grep -q loadSchedules; then
+  pass "Dashboard JS: has loadSchedules function"
+else
+  fail_test "Dashboard JS: missing loadSchedules function"
+fi
+
+
 # ── Results ─────────────────────────────────────────────
 echo ""
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
