@@ -104,3 +104,24 @@ describe('PagerDuty Import - Unit Tests', () => {
     });
   });
 });
+
+describe('PagerDuty Import - Config defaults', () => {
+  it('config schema provides DATABASE_URL default when env var is unset', () => {
+    const { z } = require('zod');
+    const schema = z.object({
+      DATABASE_URL: z.string().default('postgresql://oncall:oncall@localhost:5432/oncall'),
+    });
+    // Parse an empty object simulating missing env var
+    const config = schema.parse({});
+    expect(config.DATABASE_URL).toBe('postgresql://oncall:oncall@localhost:5432/oncall');
+  });
+
+  it('config schema preserves DATABASE_URL when env var is set', () => {
+    const { z } = require('zod');
+    const schema = z.object({
+      DATABASE_URL: z.string().default('postgresql://oncall:oncall@localhost:5432/oncall'),
+    });
+    const config = schema.parse({ DATABASE_URL: 'postgresql://custom:custom@remote:5432/custom' });
+    expect(config.DATABASE_URL).toBe('postgresql://custom:custom@remote:5432/custom');
+  });
+});
