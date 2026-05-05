@@ -76,6 +76,30 @@ npm run start:local:check
 ```
 
 
+
+## Local Dashboard
+
+After starting the server, open **http://localhost:3000** in your browser.
+
+The dashboard provides:
+- **Login panel** — Use demo credentials (shown automatically in dev mode)
+- **System overview** — Counts for services, teams, users, schedules, escalation policies
+- **Incident stats** — Triggered / acknowledged / resolved counts
+- **Recent incidents** — Table with status badges
+- **Services list** — With team and policy assignments
+- **Schedules and Escalation Policies** — Overview tables
+- **Integrations** — Shows integration key in dev mode
+- **Trigger Demo Incident** — Button to fire a test incident via the events API
+- **Health indicator** — Green dot showing API health
+
+### Demo Login
+
+In development mode, credentials are shown on the login page:
+- **Email:** `admin@oncall.local`
+- **Password:** `admin123!`
+
+The integration key for triggering test incidents is displayed in the Integrations panel (dev only).
+
 ### Full Docker setup (production-like)
 
 ```bash
@@ -230,6 +254,7 @@ npm test
 src/
 ├── index.ts          # Server entrypoint
 ├── app.ts            # Express app setup
+├── public/           # Static dashboard UI (index.html)
 ├── types/            # TypeScript types
 ├── utils/            # Config, logger, database, password
 ├── middleware/       # Auth (JWT + RBAC)
