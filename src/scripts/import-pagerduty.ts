@@ -11,6 +11,12 @@ import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import * as fs from 'fs';
 import * as path from 'path';
+import { getConfig } from '../utils/config';
+
+// Ensure DATABASE_URL is set for Prisma (uses config defaults for local dev)
+if (!process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = getConfig().DATABASE_URL;
+}
 
 const prisma = new PrismaClient();
 
