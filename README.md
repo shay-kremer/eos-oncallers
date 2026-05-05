@@ -86,15 +86,14 @@ npm run smoke:local
 
 After starting the server, open **http://localhost:3000** in your browser.
 
-The dashboard provides:
-- **Login panel** — Use demo credentials (shown automatically in dev mode)
-- **System overview** — Counts for services, teams, users, schedules, escalation policies
-- **Incident stats** — Triggered / acknowledged / resolved counts
-- **Recent incidents** — Table with status badges
-- **Services list** — With team and policy assignments
-- **Schedules and Escalation Policies** — Overview tables
-- **Integrations** — Shows integration key in dev mode
-- **Trigger Demo Incident** — Button to fire a test incident via the events API
+The dashboard provides a tabbed admin console with:
+- **Overview** — System stats (services, teams, users, schedules), incident counts, recent incidents table
+- **Users** — Browse all users with search by name/email, filter by role, view team memberships and masked contact info
+- **Schedules** — Browse all schedules with rotation layers, member lists, and real-time on-call badges
+- **Escalation Policies** — Multi-level policies overview
+- **Services** — With team and policy assignments
+- **Incidents** — Full list with status badges and actions
+- **Integrations** — Shows integration key in dev mode, trigger demo incident
 - **Health indicator** — Green dot showing API health
 
 ### Demo Login
@@ -130,8 +129,8 @@ docker compose up --build
 - `GET /api/auth/me` — Current user profile
 
 ### Users
-- `GET /api/users` — List users
-- `GET /api/users/:id` — Get user
+- `GET /api/users` — List users (query: `?search=`, `?role=`, `?team=`)
+- `GET /api/users/:id` — Get user with schedules
 - `PATCH /api/users/:id/role` — Update role (admin only)
 
 ### Teams

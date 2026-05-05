@@ -20,18 +20,18 @@
 .error-msg{color:var(--danger);font-size:.8rem;margin-top:.5rem;display:none}
 .dev-hint{margin-top:1rem;padding:.75rem;background:var(--surface-raised);border-radius:4px;font-size:.75rem;color:var(--text-muted);border-left:3px solid var(--accent)}
 .dev-hint code{font-family:var(--mono);color:var(--accent)}
-.app{display:none}.app.active{display:block}.login-container.hidden{display:none}
+.app{display:none}.app.active{display:flex;flex-direction:column;min-height:100vh}.login-container.hidden{display:none}
 header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border)}
 header h1{font-size:1rem;font-weight:600}header .user-info{display:flex;align-items:center;gap:.75rem;font-size:.85rem}
 header .user-info span{color:var(--text-muted)}header button{background:none;border:1px solid var(--border);color:var(--text-muted);padding:.3rem .6rem;border-radius:4px;cursor:pointer;font-size:.75rem}
 header button:hover{border-color:var(--accent);color:var(--accent)}
-.dashboard{padding:1.5rem;max-width:1400px;margin:0 auto}
+
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1rem}
 .stat-card .label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
 .stat-card .value{font-size:1.75rem;font-weight:700;margin-top:.25rem}
 .stat-card .value.triggered{color:var(--danger)}.stat-card .value.acknowledged{color:var(--warning)}.stat-card .value.resolved{color:var(--success)}
-.panels{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}@media(max-width:900px){.panels{grid-template-columns:1fr}}
+
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden}
 .panel-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-bottom:1px solid var(--border);font-size:.85rem;font-weight:600}
 .panel-body{padding:1rem;font-size:.85rem;max-height:300px;overflow-y:auto}
@@ -46,6 +46,29 @@ header button:hover{border-color:var(--accent);color:var(--accent)}
 .health-bar{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--text-muted)}
 .health-dot{width:8px;height:8px;border-radius:50%;background:var(--success)}.health-dot.down{background:var(--danger)}
 .loading{color:var(--text-muted);font-size:.8rem;padding:1rem;text-align:center}
+
+nav.tabs{display:flex;gap:0;background:var(--surface);border-bottom:1px solid var(--border);padding:0 1.5rem;overflow-x:auto}
+nav.tabs button{background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);padding:.6rem 1rem;font-size:.8rem;cursor:pointer;white-space:nowrap;font-weight:500}
+nav.tabs button:hover{color:var(--text)}nav.tabs button.active{color:var(--accent);border-bottom-color:var(--accent)}
+.main-content{flex:1;padding:1.5rem;max-width:1400px;margin:0 auto;width:100%}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.badge-admin{background:rgba(8,145,178,.15);color:var(--accent)}.badge-group_leader{background:rgba(217,119,6,.15);color:var(--warning)}.badge-user{background:rgba(100,116,139,.15);color:var(--text-muted)}
+.search-bar{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.search-bar input{padding:.4rem .75rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:.85rem;min-width:220px}
+.search-bar select{padding:.4rem .6rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:.8rem}
+.search-bar input:focus,.search-bar select:focus{outline:none;border-color:var(--accent)}
+.empty-state{color:var(--text-muted);text-align:center;padding:2rem 1rem;font-size:.85rem}
+.oncall-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .5rem;background:rgba(5,150,105,.1);border:1px solid rgba(5,150,105,.3);border-radius:4px;font-size:.75rem;color:var(--success)}
+.contact-icons{display:flex;gap:.3rem;font-size:.7rem;color:var(--text-muted)}.contact-icons span{padding:.1rem .3rem;background:var(--surface-raised);border-radius:3px}
+.schedule-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;margin-bottom:.75rem;overflow:hidden}
+.schedule-card-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+.schedule-card-header h3{font-size:.9rem;font-weight:600}.schedule-meta{font-size:.75rem;color:var(--text-muted)}
+.schedule-card-body{padding:.75rem 1rem}
+.layer-row{display:flex;align-items:center;gap:1rem;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.layer-row:last-child{border-bottom:none}
+.layer-name{font-weight:500;min-width:100px}.layer-type{color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
+.layer-members{display:flex;gap:.25rem;flex-wrap:wrap}.layer-members span{background:var(--surface-raised);padding:.1rem .4rem;border-radius:3px;font-size:.75rem}
+.panels-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:900px){.panels-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -59,10 +82,7 @@ header button:hover{border-color:var(--accent);color:var(--accent)}
       <div class="error-msg" id="login-error"></div>
       <button type="submit" class="btn btn-primary">Sign In</button>
     </form>
-    <div class="dev-hint" id="dev-hint" style="display:none">
-      <strong>Dev credentials:</strong><br>
-      <code>admin@oncall.local</code> / <code>admin123!</code>
-    </div>
+    <div class="dev-hint" id="dev-hint" style="display:none"><strong>Dev credentials:</strong><br><code>admin@oncall.local</code> / <code>admin123!</code></div>
   </div>
 </div>
 <div class="app" id="app-view">
@@ -74,22 +94,53 @@ header button:hover{border-color:var(--accent);color:var(--accent)}
       <button onclick="logout()">Logout</button>
     </div>
   </header>
-  <div class="dashboard">
-    <div class="stats-grid" id="stats-grid"></div>
-    <div class="panels">
-      <div class="panel"><div class="panel-header">Recent Incidents</div><div class="panel-body" id="incidents-panel"><div class="loading">Loading...</div></div></div>
-      <div class="panel"><div class="panel-header">Services</div><div class="panel-body" id="services-panel"><div class="loading">Loading...</div></div></div>
-      <div class="panel"><div class="panel-header">Schedules and Escalation Policies</div><div class="panel-body" id="schedules-panel"><div class="loading">Loading...</div></div></div>
-      <div class="panel"><div class="panel-header">Integrations</div><div class="panel-body" id="integrations-panel"><div class="loading">Loading...</div></div></div>
-    </div>
-    <div class="trigger-section" id="trigger-section" style="display:none">
-      <h3>Trigger Demo Incident</h3>
-      <div class="trigger-form">
-        <div class="form-group"><label>Summary</label><input type="text" id="trigger-summary" value="Test alert from dashboard" placeholder="Incident summary"></div>
-        <div class="form-group"><label>Severity</label><select id="trigger-severity"><option value="CRITICAL">Critical</option><option value="ERROR" selected>Error</option><option value="WARNING">Warning</option><option value="INFO">Info</option></select></div>
-        <button class="btn btn-sm btn-danger" onclick="triggerIncident()">Trigger</button>
+  <nav class="tabs" id="main-tabs" data-testid="main-tabs">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="users" data-testid="tab-users">Users</button>
+    <button data-tab="schedules" data-testid="tab-schedules">Schedules</button>
+    <button data-tab="escalations">Escalations</button>
+    <button data-tab="services">Services</button>
+    <button data-tab="incidents">Incidents</button>
+    <button data-tab="integrations">Integrations</button>
+  </nav>
+  <div class="main-content">
+    <div class="tab-panel active" id="panel-overview" data-testid="panel-overview">
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="panels-grid">
+        <div class="panel"><div class="panel-header">Recent Incidents</div><div class="panel-body" id="overview-incidents"><div class="loading">Loading...</div></div></div>
+        <div class="panel"><div class="panel-header">Services</div><div class="panel-body" id="overview-services"><div class="loading">Loading...</div></div></div>
       </div>
-      <div class="trigger-result" id="trigger-result"></div>
+    </div>
+    <div class="tab-panel" id="panel-users" data-testid="panel-users">
+      <div class="search-bar">
+        <input type="text" id="user-search" placeholder="Search by name or email..." data-testid="user-search">
+        <select id="user-role-filter" data-testid="user-role-filter"><option value="">All roles</option><option value="ADMIN">Admin</option><option value="GROUP_LEADER">Group Leader</option><option value="USER">User</option></select>
+      </div>
+      <div class="panel"><div class="panel-header"><span>Users</span><span id="user-count" style="font-weight:normal;color:var(--text-muted)"></span></div><div class="panel-body" id="users-table" data-testid="users-table"><div class="loading">Loading...</div></div></div>
+    </div>
+    <div class="tab-panel" id="panel-schedules" data-testid="panel-schedules">
+      <div id="schedules-list" data-testid="schedules-list"><div class="loading">Loading...</div></div>
+    </div>
+    <div class="tab-panel" id="panel-escalations" data-testid="panel-escalations">
+      <div class="panel"><div class="panel-header">Escalation Policies</div><div class="panel-body" id="escalations-table"><div class="loading">Loading...</div></div></div>
+    </div>
+    <div class="tab-panel" id="panel-services" data-testid="panel-services">
+      <div class="panel"><div class="panel-header">Services</div><div class="panel-body" id="services-table"><div class="loading">Loading...</div></div></div>
+    </div>
+    <div class="tab-panel" id="panel-incidents" data-testid="panel-incidents">
+      <div class="panel"><div class="panel-header">All Incidents</div><div class="panel-body" id="incidents-table"><div class="loading">Loading...</div></div></div>
+      <div class="trigger-section" id="trigger-section" style="display:none">
+        <h3>Trigger Demo Incident</h3>
+        <div class="trigger-form">
+          <div class="form-group"><label>Summary</label><input type="text" id="trigger-summary" value="Test alert from dashboard" placeholder="Incident summary"></div>
+          <div class="form-group"><label>Severity</label><select id="trigger-severity"><option value="CRITICAL">Critical</option><option value="ERROR" selected>Error</option><option value="WARNING">Warning</option><option value="INFO">Info</option></select></div>
+          <button class="btn btn-sm btn-danger" onclick="triggerIncident()">Trigger</button>
+        </div>
+        <div class="trigger-result" id="trigger-result"></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-integrations" data-testid="panel-integrations">
+      <div class="panel"><div class="panel-header">Integrations</div><div class="panel-body" id="integrations-table"><div class="loading">Loading...</div></div></div>
     </div>
   </div>
 </div>
@@ -99,18 +150,29 @@ function api(path,opts){opts=opts||{};var headers=Object.assign({"Content-Type":
 (function(){fetch("/api/dashboard/summary").then(function(r){return r.json();}).then(function(d){if(d.environment==="development")document.getElementById("dev-hint").style.display="block";}).catch(function(){});if(token){api("/api/auth/me").then(function(r){if(r.ok)return r.json();throw new Error();}).then(function(u){currentUser=u;showDashboard();}).catch(function(){token=null;localStorage.removeItem("oncall_token");});}})();
 document.getElementById("login-form").addEventListener("submit",function(e){e.preventDefault();var email=document.getElementById("email").value;var password=document.getElementById("password").value;var errEl=document.getElementById("login-error");errEl.style.display="none";fetch(API+"/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email,password:password})}).then(function(r){return r.json().then(function(data){if(!r.ok){errEl.textContent=data.error||"Login failed";errEl.style.display="block";return;}token=data.token;currentUser=data.user;localStorage.setItem("oncall_token",token);showDashboard();});}).catch(function(){errEl.textContent="Connection error";errEl.style.display="block";});});
 function logout(){token=null;currentUser=null;localStorage.removeItem("oncall_token");document.getElementById("app-view").classList.remove("active");document.getElementById("login-view").classList.remove("hidden");}
-function showDashboard(){document.getElementById("login-view").classList.add("hidden");document.getElementById("app-view").classList.add("active");document.getElementById("user-name").textContent=(currentUser&&currentUser.name)||(currentUser&&currentUser.email)||"";checkHealth();loadSummary();}
+function showDashboard(){document.getElementById("login-view").classList.add("hidden");document.getElementById("app-view").classList.add("active");document.getElementById("user-name").textContent=(currentUser&&currentUser.name)||(currentUser&&currentUser.email)||"";checkHealth();loadOverview();loadUsers();loadSchedules();loadEscalations();loadAllServices();loadIncidents();}
 function checkHealth(){fetch("/health").then(function(r){var dot=document.getElementById("health-dot");var txt=document.getElementById("health-text");if(r.ok){dot.classList.remove("down");txt.textContent="Healthy";}else{dot.classList.add("down");txt.textContent="Degraded";}}).catch(function(){document.getElementById("health-dot").classList.add("down");document.getElementById("health-text").textContent="Unreachable";});}
-function loadSummary(){api("/api/dashboard/summary").then(function(r){return r.json();}).then(function(d){renderStats(d);renderIncidents(d.recentIncidents);renderServices();renderSchedules();renderIntegrations(d);}).catch(function(e){console.error("Failed",e);});}
-function renderStats(d){var g=document.getElementById("stats-grid");g.innerHTML=sc("Services",d.services)+sc("Teams",d.teams)+sc("Users",d.users)+sc("Schedules",d.schedules)+sc("Escalation Policies",d.escalationPolicies)+sc("Triggered",d.incidents.triggered,"triggered")+sc("Acknowledged",d.incidents.acknowledged,"acknowledged")+sc("Resolved",d.incidents.resolved,"resolved");}
-function sc(label,val,cls){return '<div class="stat-card"><div class="label">'+label+'</div><div class="value'+(cls?" "+cls:"")+'">'+val+'</div></div>';}
-function renderIncidents(incidents){var el=document.getElementById("incidents-panel");if(!incidents||incidents.length===0){el.innerHTML='<p style="color:var(--text-muted)">No incidents yet.</p>';return;}var rows=incidents.map(function(i){return"<tr><td>"+(i.number||"-")+"</td><td>"+esc(i.title)+"</td><td>"+esc((i.service&&i.service.name)||"-")+'</td><td><span class="badge badge-'+i.status.toLowerCase()+'">'+i.status+"</span></td><td>"+timeAgo(i.createdAt)+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>#</th><th>Title</th><th>Service</th><th>Status</th><th>Time</th></tr></thead><tbody>"+rows+"</tbody></table>";}
-function renderServices(){api("/api/services").then(function(r){return r.json();}).then(function(svcs){var el=document.getElementById("services-panel");if(!svcs||svcs.length===0){el.innerHTML='<p style="color:var(--text-muted)">No services.</p>';return;}var rows=svcs.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc((s.team&&s.team.name)||"-")+"</td><td>"+esc((s.escalationPolicy&&s.escalationPolicy.name)||"-")+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>Name</th><th>Team</th><th>Policy</th></tr></thead><tbody>"+rows+"</tbody></table>";}).catch(function(){document.getElementById("services-panel").innerHTML='<p style="color:var(--text-muted)">Failed to load.</p>';});}
-function renderSchedules(){var el=document.getElementById("schedules-panel");Promise.all([api("/api/schedules"),api("/api/escalation-policies")]).then(function(res){return Promise.all([res[0].json(),res[1].json()]);}).then(function(data){var s=data[0],p=data[1];var html="";if(s.length){html+="<table><thead><tr><th>Schedule</th><th>Timezone</th></tr></thead><tbody>"+s.map(function(x){return"<tr><td>"+esc(x.name)+"</td><td>"+esc(x.timezone)+"</td></tr>";}).join("")+"</tbody></table>";}if(p.length){html+='<table style="margin-top:.75rem"><thead><tr><th>Escalation Policy</th><th>Levels</th></tr></thead><tbody>'+p.map(function(x){return"<tr><td>"+esc(x.name)+"</td><td>"+((x.levels&&x.levels.length)||0)+"</td></tr>";}).join("")+"</tbody></table>";}el.innerHTML=html||'<p style="color:var(--text-muted)">No schedules or policies.</p>';}).catch(function(){el.innerHTML='<p style="color:var(--text-muted)">Failed to load.</p>';});}
-function renderIntegrations(d){var el=document.getElementById("integrations-panel");var html='<p style="color:var(--text-muted);margin-bottom:.5rem">'+d.integrations+' integration(s) configured</p>';if(d.demoIntegrationKey){demoKey=d.demoIntegrationKey;document.getElementById("trigger-section").style.display="block";html+='<p style="font-size:.8rem"><strong>Integration Key (dev):</strong> <code style="font-family:var(--mono);color:var(--accent)">'+esc(d.demoIntegrationKey)+'</code></p>';}html+='<p style="margin-top:.75rem;font-size:.8rem;color:var(--text-muted)">POST <code style="font-family:var(--mono)">/api/webhooks/events</code> with routing_key to trigger incidents.</p>';el.innerHTML=html;}
-function triggerIncident(){if(!demoKey)return;var summary=document.getElementById("trigger-summary").value||"Test alert";var severity=document.getElementById("trigger-severity").value;var resultEl=document.getElementById("trigger-result");api("/api/webhooks/events",{method:"POST",body:JSON.stringify({routing_key:demoKey,event_action:"trigger",payload:{summary:summary,severity:severity,source:"dashboard-demo"}})}).then(function(r){return r.json();}).then(function(data){resultEl.textContent=JSON.stringify(data,null,2);resultEl.classList.add("show");setTimeout(loadSummary,500);}).catch(function(e){resultEl.textContent="Error: "+e.message;resultEl.classList.add("show");});}
+document.getElementById("main-tabs").addEventListener("click",function(e){if(e.target.tagName!=="BUTTON")return;document.querySelectorAll("#main-tabs button").forEach(function(b){b.classList.remove("active");});e.target.classList.add("active");var tab=e.target.getAttribute("data-tab");document.querySelectorAll(".tab-panel").forEach(function(p){p.classList.remove("active");});document.getElementById("panel-"+tab).classList.add("active");});
+function loadOverview(){api("/api/dashboard/summary").then(function(r){return r.json();}).then(function(d){renderStats(d);renderOverviewIncidents(d.recentIncidents);renderOverviewServices();if(d.demoIntegrationKey){demoKey=d.demoIntegrationKey;document.getElementById("trigger-section").style.display="block";}}).catch(function(e){console.error("Failed",e);});}
+function renderStats(d){var g=document.getElementById("stats-grid");g.innerHTML=sc("Services",d.services)+sc("Teams",d.teams)+sc("Users",d.users)+sc("Schedules",d.schedules)+sc("Policies",d.escalationPolicies)+sc("Triggered",d.incidents.triggered,"triggered")+sc("Acknowledged",d.incidents.acknowledged,"acknowledged")+sc("Resolved",d.incidents.resolved,"resolved");}
+function sc(label,val,cls){return "<div class=\"stat-card\"><div class=\"label\">"+label+"</div><div class=\"value"+(cls?" "+cls:"")+"\">"+val+"</div></div>";}
+function renderOverviewIncidents(incidents){var el=document.getElementById("overview-incidents");if(!incidents||incidents.length===0){el.innerHTML="<p class=\"empty-state\">No incidents yet.</p>";return;}var rows=incidents.map(function(i){return"<tr><td>"+(i.number||"-")+"</td><td>"+esc(i.title)+"</td><td>"+esc((i.service&&i.service.name)||"-")+"</td><td><span class=\"badge badge-"+i.status.toLowerCase()+"\">"+i.status+"</span></td><td>"+timeAgo(i.createdAt)+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>#</th><th>Title</th><th>Service</th><th>Status</th><th>Time</th></tr></thead><tbody>"+rows+"</tbody></table>";}
+function renderOverviewServices(){api("/api/services").then(function(r){return r.json();}).then(function(svcs){var el=document.getElementById("overview-services");if(!svcs||svcs.length===0){el.innerHTML="<p class=\"empty-state\">No services.</p>";return;}var rows=svcs.slice(0,8).map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc((s.team&&s.team.name)||"-")+"</td><td>"+esc((s.escalationPolicy&&s.escalationPolicy.name)||"-")+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>Name</th><th>Team</th><th>Policy</th></tr></thead><tbody>"+rows+"</tbody></table>";}).catch(function(){});}
+function loadUsers(search,role){var qs="";if(search)qs+="?search="+encodeURIComponent(search);if(role)qs+=(qs?"&":"?")+"role="+encodeURIComponent(role);api("/api/users"+qs).then(function(r){return r.json();}).then(function(users){renderUsersTable(users);}).catch(function(){document.getElementById("users-table").innerHTML="<p class=\"empty-state\">Failed to load users.</p>";});}
+function renderUsersTable(users){var el=document.getElementById("users-table");document.getElementById("user-count").textContent=" ("+users.length+")";if(!users||users.length===0){el.innerHTML="<p class=\"empty-state\">No users found.</p>";return;}var rows=users.map(function(u){var teams=u.teams&&u.teams.length?u.teams.map(function(t){return esc(t.name);}).join(", "):"—";var contacts=[];if(u.hasPhone)contacts.push("<span>Phone</span>");if(u.hasSlack)contacts.push("<span>Slack</span>");if(u.contactMethods){u.contactMethods.forEach(function(m){if(m!=="PHONE"&&m!=="SLACK")contacts.push("<span>"+esc(m)+"</span>");});}return"<tr><td>"+esc(u.name)+"</td><td>"+esc(u.email)+"</td><td><span class=\"badge badge-"+u.role.toLowerCase()+"\">"+u.role+"</span></td><td>"+teams+"</td><td><div class=\"contact-icons\">"+contacts.join("")+"</div></td><td>"+timeAgo(u.createdAt)+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Teams</th><th>Contact</th><th>Joined</th></tr></thead><tbody>"+rows+"</tbody></table>";}
+var searchTimeout;document.getElementById("user-search").addEventListener("input",function(e){clearTimeout(searchTimeout);searchTimeout=setTimeout(function(){loadUsers(e.target.value,document.getElementById("user-role-filter").value);},300);});
+document.getElementById("user-role-filter").addEventListener("change",function(e){loadUsers(document.getElementById("user-search").value,e.target.value);});
+function loadSchedules(){api("/api/schedules").then(function(r){return r.json();}).then(function(schedules){renderSchedulesList(schedules);}).catch(function(){document.getElementById("schedules-list").innerHTML="<p class=\"empty-state\">Failed to load schedules.</p>";});}
+function renderSchedulesList(schedules){var el=document.getElementById("schedules-list");if(!schedules||schedules.length===0){el.innerHTML="<p class=\"empty-state\">No schedules configured.</p>";return;}var html=schedules.map(function(s){var oncallHtml="";if(s.currentOnCall&&s.currentOnCall.user){oncallHtml="<span class=\"oncall-badge\">On-call: "+esc(s.currentOnCall.user.name)+(s.currentOnCall.layer?" ("+esc(s.currentOnCall.layer)+")":"")+"</span>";}else{oncallHtml="<span style=\"font-size:.75rem;color:var(--text-muted)\">No one on-call</span>";}var layersHtml="";if(s.layers&&s.layers.length){layersHtml=s.layers.map(function(l){var members=l.members&&l.members.length?l.members.map(function(m){return"<span>"+esc(m.name)+"</span>";}).join(""):"<span style=\"color:var(--text-muted)\">No members</span>";return"<div class=\"layer-row\"><span class=\"layer-name\">"+esc(l.name)+"</span><span class=\"layer-type\">"+esc(l.rotationType)+"</span><div class=\"layer-members\">"+members+"</div></div>";}).join("");}else{layersHtml="<div style=\"color:var(--text-muted);font-size:.8rem;padding:.5rem 0\">No layers configured</div>";}return"<div class=\"schedule-card\" data-testid=\"schedule-card\"><div class=\"schedule-card-header\"><div><h3>"+esc(s.name)+"</h3><span class=\"schedule-meta\">"+esc(s.timezone)+(s.memberCount?" \u00b7 "+s.memberCount+" members":"")+"</span></div><div>"+oncallHtml+"</div></div><div class=\"schedule-card-body\">"+layersHtml+"</div></div>";}).join("");el.innerHTML=html;}
+function loadEscalations(){api("/api/escalation-policies").then(function(r){return r.json();}).then(function(policies){renderEscalations(policies);}).catch(function(){document.getElementById("escalations-table").innerHTML="<p class=\"empty-state\">Failed to load.</p>";});}
+function renderEscalations(policies){var el=document.getElementById("escalations-table");if(!policies||policies.length===0){el.innerHTML="<p class=\"empty-state\">No escalation policies.</p>";return;}var rows=policies.map(function(p){var levels=(p.levels&&p.levels.length)||0;return"<tr><td>"+esc(p.name)+"</td><td>"+(p.description?esc(p.description):"—")+"</td><td>"+levels+"</td><td>"+(p.repeatCount||0)+"</td><td>"+((p.services&&p.services.length)||0)+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>Name</th><th>Description</th><th>Levels</th><th>Repeat</th><th>Services</th></tr></thead><tbody>"+rows+"</tbody></table>";}
+function loadAllServices(){api("/api/services").then(function(r){return r.json();}).then(function(svcs){renderServicesTable(svcs);}).catch(function(){document.getElementById("services-table").innerHTML="<p class=\"empty-state\">Failed to load.</p>";});}
+function renderServicesTable(svcs){var el=document.getElementById("services-table");if(!svcs||svcs.length===0){el.innerHTML="<p class=\"empty-state\">No services.</p>";return;}var rows=svcs.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+(s.description?esc(s.description):"—")+"</td><td>"+esc((s.team&&s.team.name)||"—")+"</td><td>"+esc((s.escalationPolicy&&s.escalationPolicy.name)||"—")+"</td><td>"+esc(s.status)+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>Name</th><th>Description</th><th>Team</th><th>Escalation Policy</th><th>Status</th></tr></thead><tbody>"+rows+"</tbody></table>";}
+function loadIncidents(){api("/api/incidents").then(function(r){return r.json();}).then(function(incidents){renderIncidentsTable(incidents);}).catch(function(){document.getElementById("incidents-table").innerHTML="<p class=\"empty-state\">Failed to load.</p>";});}
+function renderIncidentsTable(incidents){var el=document.getElementById("incidents-table");if(!incidents||incidents.length===0){el.innerHTML="<p class=\"empty-state\">No incidents.</p>";return;}var rows=incidents.map(function(i){return"<tr><td>"+(i.number||"-")+"</td><td>"+esc(i.title)+"</td><td>"+esc((i.service&&i.service.name)||"—")+"</td><td><span class=\"badge badge-"+i.status.toLowerCase()+"\">"+i.status+"</span></td><td>"+esc(i.urgency||"—")+"</td><td>"+timeAgo(i.createdAt)+"</td></tr>";}).join("");el.innerHTML="<table><thead><tr><th>#</th><th>Title</th><th>Service</th><th>Status</th><th>Urgency</th><th>Time</th></tr></thead><tbody>"+rows+"</tbody></table>";}
+function triggerIncident(){if(!demoKey)return;var summary=document.getElementById("trigger-summary").value||"Test alert";var severity=document.getElementById("trigger-severity").value;var resultEl=document.getElementById("trigger-result");api("/api/webhooks/events",{method:"POST",body:JSON.stringify({routing_key:demoKey,event_action:"trigger",payload:{summary:summary,severity:severity,source:"dashboard-demo"}})}).then(function(r){return r.json();}).then(function(data){resultEl.textContent=JSON.stringify(data,null,2);resultEl.classList.add("show");setTimeout(function(){loadOverview();loadIncidents();},500);}).catch(function(e){resultEl.textContent="Error: "+e.message;resultEl.classList.add("show");});}
 function esc(s){if(!s)return"";var d=document.createElement("div");d.textContent=s;return d.innerHTML;}
-function timeAgo(iso){if(!iso)return"-";var s=Math.floor((Date.now()-new Date(iso).getTime())/1000);if(s<60)return s+"s ago";if(s<3600)return Math.floor(s/60)+"m ago";if(s<86400)return Math.floor(s/3600)+"h ago";return Math.floor(s/86400)+"d ago";}
+function timeAgo(iso){if(!iso)return"—";var s=Math.floor((Date.now()-new Date(iso).getTime())/1000);if(s<60)return s+"s ago";if(s<3600)return Math.floor(s/60)+"m ago";if(s<86400)return Math.floor(s/3600)+"h ago";return Math.floor(s/86400)+"d ago";}
 </script>
 </body>
 </html>
