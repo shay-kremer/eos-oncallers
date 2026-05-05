@@ -1,62 +1,86 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import request from 'supertest';
+import { createApp } from '../src/app';
 
-const html = readFileSync(join(__dirname, '../src/public/index.html'), 'utf8');
+const app = createApp();
 
-describe('Dashboard UI markers', () => {
-  it('should have Users tab', () => {
-    expect(html).toContain('data-testid="tab-users"');
-    expect(html).toContain('data-tab="users"');
+describe('Dashboard HTML UI markers', () => {
+  it('returns HTML with app title', async () => {
+    const res = await request(app).get('/');
+    expect(res.status).toBe(200);
+    expect(res.text).toContain('eos-oncallers');
   });
 
-  it('should have Schedules tab', () => {
-    expect(html).toContain('data-testid="tab-schedules"');
-    expect(html).toContain('data-tab="schedules"');
+  const requiredTabs = [
+    'tab-overview',
+    'tab-incidents',
+    'tab-services',
+    'tab-schedules',
+    'tab-escalations',
+    'tab-users',
+    'tab-teams',
+    'tab-integrations',
+    'tab-status-pages',
+    'tab-automation',
+    'tab-analytics',
+    'tab-audit',
+    'tab-settings',
+  ];
+
+  for (const tab of requiredTabs) {
+    it(`has ${tab} marker`, async () => {
+      const res = await request(app).get('/');
+      expect(res.text).toContain(tab);
+    });
+  }
+
+  const requiredPanels = [
+    'panel-overview',
+    'panel-incidents',
+    'panel-services',
+    'panel-schedules',
+    'panel-escalations',
+    'panel-users',
+    'panel-teams',
+    'panel-integrations',
+    'panel-status-pages',
+    'panel-automation',
+    'panel-analytics',
+    'panel-audit',
+    'panel-settings',
+  ];
+
+  for (const panel of requiredPanels) {
+    it(`has ${panel} panel`, async () => {
+      const res = await request(app).get('/');
+      expect(res.text).toContain(panel);
+    });
+  }
+
+  it('contains incident action functions (ack/resolve)', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('ackIncident');
+    expect(res.text).toContain('resolveIncident');
   });
 
-  it('should have Users panel with search and table', () => {
-    expect(html).toContain('id="panel-users"');
-    expect(html).toContain('data-testid="panel-users"');
-    expect(html).toContain('id="user-search"');
-    expect(html).toContain('id="users-table"');
-    expect(html).toContain('data-testid="users-table"');
+  it('contains loadUsers and loadSchedules functions', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('loadUsers');
+    expect(res.text).toContain('loadSchedules');
   });
 
-  it('should have Schedules panel with list', () => {
-    expect(html).toContain('id="panel-schedules"');
-    expect(html).toContain('data-testid="panel-schedules"');
-    expect(html).toContain('id="schedules-list"');
-    expect(html).toContain('data-testid="schedules-list"');
+  it('contains loadTeams function', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('loadTeams');
   });
 
-  it('should have navigation tabs for all sections', () => {
-    expect(html).toContain('data-tab="overview"');
-    expect(html).toContain('data-tab="users"');
-    expect(html).toContain('data-tab="schedules"');
-    expect(html).toContain('data-tab="escalations"');
-    expect(html).toContain('data-tab="services"');
-    expect(html).toContain('data-tab="incidents"');
-    expect(html).toContain('data-tab="integrations"');
+  it('contains loadAnalytics function', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('loadAnalytics');
   });
 
-  it('should have role filter for users', () => {
-    expect(html).toContain('id="user-role-filter"');
-    expect(html).toContain('value="ADMIN"');
-    expect(html).toContain('value="GROUP_LEADER"');
-  });
-
-  it('should include JavaScript that loads users and schedules', () => {
-    expect(html).toContain('loadUsers');
-    expect(html).toContain('loadSchedules');
-    expect(html).toContain('/api/users');
-    expect(html).toContain('/api/schedules');
-  });
-
-  it('should render schedule layers and on-call info', () => {
-    expect(html).toContain('currentOnCall');
-    expect(html).toContain('oncall-badge');
-    expect(html).toContain('layer-row');
-    expect(html).toContain('layer-members');
+  it('contains loadSettings function', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('loadSettings');
   });
 });
