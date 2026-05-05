@@ -17,7 +17,8 @@
     "db:reset": "prisma migrate reset --force",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "db:import-pd": "tsx src/scripts/import-pagerduty.ts"
+    "db:import-pd": "tsx src/scripts/import-pagerduty.ts",
+    "start:local": "docker compose up -d postgres redis && npx prisma migrate deploy && npx prisma generate && npm run db:seed && npm run dev"
   },
   "dependencies": {
     "@prisma/client": "^6.3.0",

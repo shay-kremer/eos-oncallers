@@ -20,7 +20,7 @@ On-call incident management system — a PagerDuty-like platform for managing sc
 
 ### Prerequisites
 - Node.js 20+
-- Docker & Docker Compose
+- Docker & Docker Compose (**Docker Desktop must be running**)
 
 ### 1. Start infrastructure
 
@@ -54,6 +54,13 @@ npm run dev
 ```
 
 Server runs at http://localhost:3000
+
+### One-command start (does everything above)
+
+```bash
+npm run start:local
+```
+
 
 ### Full Docker setup (production-like)
 
@@ -186,6 +193,15 @@ All integrations use environment variables — no secrets in code:
 | AWS Webhook | `AWS_WEBHOOK_URL` | Forward incidents to Lambda/API Gateway |
 
 When env vars are not set, integrations log mock notifications instead of failing.
+
+## Troubleshooting
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| `docker.sock: connect: no such file or directory` | Docker Desktop not running | Open Docker Desktop, wait until whale icon is steady |
+| `EADDRINUSE: address already in use :::3000` | Port 3000 already occupied | `lsof -ti :3000 \| xargs kill -9` then retry |
+| `prisma migrate deploy` fails with connection refused | Postgres container not healthy yet | `docker compose ps` — wait for `(healthy)` status |
+
 
 ## Testing
 
