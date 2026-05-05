@@ -61,6 +61,20 @@ Server runs at http://localhost:3000
 npm run start:local
 ```
 
+This script will:
+1. Check Docker is running (starts Docker Desktop on macOS if needed)
+2. Start Postgres and Redis containers
+3. Wait for Postgres readiness
+4. Create `.env` from `.env.example` if missing
+5. Run Prisma migrations and seed
+6. Import PagerDuty data
+7. Start the dev server at http://localhost:3000
+
+**Preflight check only** (no server start):
+```bash
+npm run start:local:check
+```
+
 
 ### Full Docker setup (production-like)
 
@@ -201,6 +215,7 @@ When env vars are not set, integrations log mock notifications instead of failin
 | `docker.sock: connect: no such file or directory` | Docker Desktop not running | Open Docker Desktop, wait until whale icon is steady |
 | `EADDRINUSE: address already in use :::3000` | Port 3000 already occupied | `lsof -ti :3000 \| xargs kill -9` then retry |
 | `prisma migrate deploy` fails with connection refused | Postgres container not healthy yet | `docker compose ps` — wait for `(healthy)` status |
+| `Environment variable not found: DATABASE_URL` | Missing .env file | Run `cp .env.example .env` or use `npm run start:local` which handles it automatically |
 
 
 ## Testing
