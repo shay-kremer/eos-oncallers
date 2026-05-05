@@ -1,0 +1,321 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  GROUP_LEADER
+  USER
+}
+
+enum IncidentStatus {
+  TRIGGERED
+  ACKNOWLEDGED
+  RESOLVED
+}
+
+enum IncidentUrgency {
+  HIGH
+  LOW
+}
+
+enum AlertSeverity {
+  CRITICAL
+  ERROR
+  WARNING
+  INFO
+}
+
+enum NotificationMethod {
+  EMAIL
+  SMS
+  PHONE
+  SLACK
+  WEBHOOK
+}
+
+enum EscalationTargetType {
+  USER
+  SCHEDULE
+}
+
+model User {
+  id                String              @id @default(uuid())
+  email             String              @unique
+  name              String
+  phone             String?
+  passwordHash      String
+  role              UserRole            @default(USER)
+  slackUserId       String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  teamMemberships   TeamMember[]
+  incidents         IncidentAssignment[]
+  notificationRules NotificationRule[]
+  scheduleMembers   ScheduleMember[]
+  overrides         ScheduleOverride[]
+  activityLogs      ActivityLog[]
+  acknowledgedIncidents Incident[]      @relation("AcknowledgedBy")
+  resolvedIncidents     Incident[]      @relation("ResolvedBy")
+}
+
+model Team {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  description String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  members     TeamMember[]
+  services    Service[]
+}
+
+model TeamMember {
+  id     String   @id @default(uuid())
+  userId String
+  teamId String
+  role   UserRole @default(USER)
+  user   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  team   Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, teamId])
+}
+
+model Service {
+  id                 String             @id @default(uuid())
+  name               String             @unique
+  description        String?
+  teamId             String
+  escalationPolicyId String?
+  status             String             @default("active")
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  team               Team               @relation(fields: [teamId], references: [id])
+  escalationPolicy   EscalationPolicy?  @relation(fields: [escalationPolicyId], references: [id])
+  incidents          Incident[]
+  integrations       ServiceIntegration[]
+  alertRules         AlertRule[]
+}
+
+model EscalationPolicy {
+  id          String            @id @default(uuid())
+  name        String            @unique
+  description String?
+  repeatCount Int               @default(3)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  levels      EscalationLevel[]
+  services    Service[]
+}
+
+model EscalationLevel {
+  id                 String               @id @default(uuid())
+  escalationPolicyId String
+  level              Int
+  delayMinutes       Int                  @default(5)
+  escalationPolicy   EscalationPolicy     @relation(fields: [escalationPolicyId], references: [id], onDelete: Cascade)
+  targets            EscalationTarget[]
+
+  @@unique([escalationPolicyId, level])
+}
+
+model EscalationTarget {
+  id                String               @id @default(uuid())
+  escalationLevelId String
+  targetType        EscalationTargetType
+  targetId          String
+  escalationLevel   EscalationLevel      @relation(fields: [escalationLevelId], references: [id], onDelete: Cascade)
+}
+
+model Schedule {
+  id          String             @id @default(uuid())
+  name        String             @unique
+  description String?
+  timezone    String             @default("UTC")
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  layers      ScheduleLayer[]
+  overrides   ScheduleOverride[]
+  members     ScheduleMember[]
+}
+
+model ScheduleLayer {
+  id            String           @id @default(uuid())
+  scheduleId    String
+  name          String
+  priority      Int              @default(0)
+  rotationType  String           @default("weekly")
+  handoffTime   String           @default("09:00")
+  handoffDay    Int?             @default(1)
+  startDate     DateTime
+  endDate       DateTime?
+  schedule      Schedule         @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  members       ScheduleMember[]
+
+  @@unique([scheduleId, priority])
+}
+
+model ScheduleMember {
+  id        String         @id @default(uuid())
+  userId    String
+  scheduleId String
+  layerId   String?
+  position  Int            @default(0)
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  schedule  Schedule       @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  layer     ScheduleLayer? @relation(fields: [layerId], references: [id], onDelete: Cascade)
+}
+
+model ScheduleOverride {
+  id         String   @id @default(uuid())
+  scheduleId String
+  userId     String
+  startTime  DateTime
+  endTime    DateTime
+  reason     String?
+  schedule   Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Incident {
+  id              String              @id @default(uuid())
+  number          Int                 @default(autoincrement())
+  title           String
+  description     String?
+  status          IncidentStatus      @default(TRIGGERED)
+  urgency         IncidentUrgency     @default(HIGH)
+  severity        AlertSeverity       @default(ERROR)
+  serviceId       String
+  acknowledgedAt  DateTime?
+  resolvedAt      DateTime?
+  acknowledgedById String?
+  resolvedById    String?
+  dedupKey        String?             @unique
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  service         Service             @relation(fields: [serviceId], references: [id])
+  acknowledgedBy  User?               @relation("AcknowledgedBy", fields: [acknowledgedById], references: [id])
+  resolvedBy      User?               @relation("ResolvedBy", fields: [resolvedById], references: [id])
+  assignments     IncidentAssignment[]
+  alerts          Alert[]
+  timeline        IncidentTimeline[]
+}
+
+model IncidentAssignment {
+  id         String   @id @default(uuid())
+  incidentId String
+  userId     String
+  assignedAt DateTime @default(now())
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@unique([incidentId, userId])
+}
+
+model IncidentTimeline {
+  id         String   @id @default(uuid())
+  incidentId String
+  type       String
+  message    String
+  data       Json?
+  createdAt  DateTime @default(now())
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+}
+
+model Alert {
+  id         String        @id @default(uuid())
+  incidentId String?
+  serviceId  String?
+  severity   AlertSeverity @default(ERROR)
+  summary    String
+  source     String?
+  details    Json?
+  dedupKey   String?
+  createdAt  DateTime      @default(now())
+  incident   Incident?     @relation(fields: [incidentId], references: [id])
+}
+
+model AlertRule {
+  id         String        @id @default(uuid())
+  serviceId  String
+  name       String
+  condition  Json
+  severity   AlertSeverity @default(ERROR)
+  urgency    IncidentUrgency @default(HIGH)
+  enabled    Boolean       @default(true)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  service    Service       @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model ServiceIntegration {
+  id            String   @id @default(uuid())
+  serviceId     String
+  type          String
+  name          String
+  integrationKey String  @unique @default(uuid())
+  config        Json?
+  enabled       Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  service       Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model NotificationRule {
+  id            String             @id @default(uuid())
+  userId        String
+  method        NotificationMethod
+  delayMinutes  Int                @default(0)
+  urgency       IncidentUrgency?
+  contactDetail String
+  enabled       Boolean            @default(true)
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model StatusPage {
+  id          String               @id @default(uuid())
+  name        String
+  url         String               @unique
+  enabled     Boolean              @default(true)
+  lastChecked DateTime?
+  lastStatus  String?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+  subscribers StatusPageSubscription[]
+  components  StatusPageComponent[]
+}
+
+model StatusPageComponent {
+  id           String     @id @default(uuid())
+  statusPageId String
+  name         String
+  status       String     @default("operational")
+  updatedAt    DateTime   @updatedAt
+  statusPage   StatusPage @relation(fields: [statusPageId], references: [id], onDelete: Cascade)
+}
+
+model StatusPageSubscription {
+  id           String   @id @default(uuid())
+  statusPageId String
+  email        String
+  webhook      String?
+  createdAt    DateTime @default(now())
+  statusPage   StatusPage @relation(fields: [statusPageId], references: [id], onDelete: Cascade)
+
+  @@unique([statusPageId, email])
+}
+
+model ActivityLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  action     String
+  resource   String
+  resourceId String?
+  details    Json?
+  createdAt  DateTime @default(now())
+  user       User?    @relation(fields: [userId], references: [id])
+}
