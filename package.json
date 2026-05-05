@@ -19,7 +19,8 @@
     "docker:down": "docker compose down",
     "db:import-pd": "tsx src/scripts/import-pagerduty.ts",
     "start:local": "bash scripts/start-local.sh",
-    "start:local:check": "bash scripts/start-local.sh --check"
+    "start:local:check": "bash scripts/start-local.sh --check",
+    "smoke:local": "bash scripts/smoke-test.sh"
   },
   "dependencies": {
     "@prisma/client": "^6.3.0",

@@ -19,6 +19,8 @@ fail()  { echo -e "${RED}✖ ${NC}$*" >&2; exit 1; }
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
+PORT="${PORT:-3000}"
+
 # ── Check mode ──────────────────────────────────────────
 if [[ "${1:-}" == "--check" ]]; then
   echo "Running start:local preflight checks..."
@@ -36,6 +38,33 @@ if [[ "${1:-}" == "--check" ]]; then
     exit 0
   else
     fail "$errors preflight check(s) failed"
+  fi
+fi
+
+# ── 0. Check if server is already running ───────────────
+EXISTING_PID=$(lsof -t -i :"$PORT" 2>/dev/null || true)
+if [[ -n "$EXISTING_PID" ]]; then
+  # Check if it's actually our server by hitting /health
+  if curl -sf "http://localhost:${PORT}/health" >/dev/null 2>&1; then
+    echo ""
+    echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "${GREEN} eos-oncallers is already running (PID: ${EXISTING_PID})${NC}"
+    echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo ""
+    echo -e " URL:          ${CYAN}http://localhost:${PORT}${NC}"
+    echo -e " Health:       ${CYAN}http://localhost:${PORT}/health${NC}"
+    echo ""
+    echo -e " Login:        POST /api/auth/login"
+    echo -e "   admin:      admin@oncall.local / admin123!"
+    echo -e "   leader:     leader@oncall.local / user123!"
+    echo ""
+    echo -e " To restart:   ${YELLOW}kill ${EXISTING_PID} && npm run start:local${NC}"
+    echo ""
+    exit 0
+  else
+    # Port in use by something else
+    PNAME=$(lsof -i :"$PORT" | tail -1 | awk '{print $1}')
+    fail "Port ${PORT} is in use by '${PNAME}' (PID: ${EXISTING_PID}) but it's not eos-oncallers.\n  Free it: kill ${EXISTING_PID}"
   fi
 fi
 
@@ -86,9 +115,11 @@ export JWT_SECRET="dev-secret-change-in-production"
 
 # Create .env if it doesn't exist (for tools that read it directly)
 if [[ ! -f "$PROJECT_ROOT/.env" ]]; then
-  info "Creating .env from .env.example..."
-  cp "$PROJECT_ROOT/.env.example" "$PROJECT_ROOT/.env"
-  ok ".env created"
+  if [[ -f "$PROJECT_ROOT/.env.example" ]]; then
+    info "Creating .env from .env.example..."
+    cp "$PROJECT_ROOT/.env.example" "$PROJECT_ROOT/.env"
+    ok ".env created"
+  fi
 fi
 
 # ── 5. Install deps if needed ───────────────────────────
@@ -122,14 +153,14 @@ echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━
 echo -e "${GREEN} eos-oncallers is starting...${NC}"
 echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
-echo -e " URL:          ${CYAN}http://localhost:3000${NC}"
-echo -e " Health:       ${CYAN}http://localhost:3000/health${NC}"
+echo -e " URL:          ${CYAN}http://localhost:${PORT}${NC}"
+echo -e " Health:       ${CYAN}http://localhost:${PORT}/health${NC}"
 echo ""
 echo -e " Login:        POST /api/auth/login"
 echo -e "   admin:      admin@oncall.local / admin123!"
 echo -e "   leader:     leader@oncall.local / user123!"
 echo ""
-echo -e " Example:      curl -s http://localhost:3000/api/services | jq '.data[:2]'"
+echo -e " Stop:         ${YELLOW}Ctrl+C${NC}"
 echo ""
 echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""

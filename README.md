@@ -73,6 +73,11 @@ This script will:
 **Preflight check only** (no server start):
 ```bash
 npm run start:local:check
+
+**Smoke test** (verify everything works — run in a second terminal):
+```bash
+npm run smoke:local
+```
 ```
 
 
