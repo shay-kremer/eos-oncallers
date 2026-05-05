@@ -6,7 +6,7 @@ vi.mock('../src/utils/database', () => {
     team: { findMany: vi.fn(), create: vi.fn(), count: vi.fn() },
     teamMember: { create: vi.fn(), deleteMany: vi.fn() },
     service: { findMany: vi.fn(), findUnique: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn(), count: vi.fn() },
-    incident: { findMany: vi.fn(), findUnique: vi.fn(), create: vi.fn(), update: vi.fn(), groupBy: vi.fn(), count: vi.fn() },
+    incident: { findMany: vi.fn(), findUnique: vi.fn(), create: vi.fn(), update: vi.fn(), groupBy: vi.fn(), count: vi.fn(), aggregate: vi.fn() },
     incidentAssignment: { upsert: vi.fn() },
     incidentTimeline: { create: vi.fn() },
     alert: { create: vi.fn() },
@@ -21,7 +21,7 @@ vi.mock('../src/utils/database', () => {
     statusPage: { findMany: vi.fn(), findUnique: vi.fn(), create: vi.fn() },
     statusPageComponent: { create: vi.fn(), update: vi.fn() },
     statusPageSubscription: { upsert: vi.fn() },
-    activityLog: { create: vi.fn() },
+    activityLog: { create: vi.fn(), findMany: vi.fn(), count: vi.fn() },
   };
   return { getDb: () => mockPrisma, disconnectDb: vi.fn() };
 });

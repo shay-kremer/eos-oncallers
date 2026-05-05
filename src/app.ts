@@ -16,6 +16,9 @@ import alertRuleRoutes from './routes/alert-rules';
 import statusPageRoutes from './routes/status-pages';
 import webhookRoutes from './routes/webhooks';
 import dashboardRoutes from './routes/dashboard';
+import analyticsRoutes from './routes/analytics';
+import activityLogRoutes from './routes/activity-log';
+import settingsRoutes from './routes/settings';
 
 export function createApp() {
   const app = express();
@@ -54,6 +57,9 @@ export function createApp() {
   app.use('/api/status-pages', statusPageRoutes);
   app.use('/api/webhooks', webhookRoutes);
   app.use('/api/dashboard', dashboardRoutes);
+  app.use('/api/analytics', analyticsRoutes);
+  app.use('/api/activity-log', activityLogRoutes);
+  app.use('/api/settings', settingsRoutes);
 
   // Serve static dashboard UI
   app.use(express.static(path.join(__dirname, 'public')));

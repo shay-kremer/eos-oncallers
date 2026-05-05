@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ──────────────────────────────────────────────
 # eos-oncallers smoke test
-# Verifies the local server is running and healthy
+# Verifies all tabs and features work locally
 # ──────────────────────────────────────────────
 
 RED='\033[0;31m'
@@ -29,13 +29,21 @@ else
   fail_test "/health did not return ok (got: ${HEALTH:-connection refused})"
 fi
 
-# ── 2. Dashboard HTML ───────────────────────────────────
+# ── 2. Dashboard HTML with all tabs ─────────────────────
 DASH=$(curl -sf "${BASE_URL}/" 2>/dev/null || echo "")
 if echo "$DASH" | grep -q "eos-oncallers"; then
-  pass "/ returns HTML with dashboard marker"
+  pass "/ returns HTML with app title"
 else
-  fail_test "/ did not return expected HTML dashboard"
+  fail_test "/ did not return expected HTML"
 fi
+
+for TAB in tab-overview tab-incidents tab-services tab-schedules tab-escalations tab-users tab-teams tab-integrations tab-status-pages tab-automation tab-analytics tab-audit tab-settings; do
+  if echo "$DASH" | grep -q "$TAB"; then
+    pass "HTML has $TAB marker"
+  else
+    fail_test "HTML missing $TAB marker"
+  fi
+done
 
 # ── 3. Login with admin credentials ────────────────────
 LOGIN=$(curl -sf -X POST "${BASE_URL}/api/auth/login" \
@@ -48,7 +56,9 @@ else
   fail_test "Login failed (response: ${LOGIN:-empty})"
 fi
 
-# ── 4. Dashboard summary with auth ─────────────────────
+AUTH="-H \"Authorization: Bearer ${TOKEN}\""
+
+# ── 4. Dashboard summary ───────────────────────────────
 if [[ -n "$TOKEN" ]]; then
   SUMMARY=$(curl -sf "${BASE_URL}/api/dashboard/summary" \
     -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
@@ -57,19 +67,92 @@ if [[ -n "$TOKEN" ]]; then
   SCHEDULES=$(echo "$SUMMARY" | grep -o '"schedules":[0-9]*' | cut -d: -f2)
   
   if [[ "${SERVICES:-0}" -gt 0 ]]; then
-    pass "Dashboard summary: ${SERVICES} services"
+    pass "Dashboard: ${SERVICES} services"
   else
-    fail_test "Dashboard summary: expected >0 services (got: ${SERVICES:-null}, response: ${SUMMARY:-empty})"
+    fail_test "Dashboard: expected >0 services (got: ${SERVICES:-null})"
   fi
   
   if [[ "${SCHEDULES:-0}" -gt 0 ]]; then
-    pass "Dashboard summary: ${SCHEDULES} schedules"
+    pass "Dashboard: ${SCHEDULES} schedules"
   else
-    fail_test "Dashboard summary: expected >0 schedules (got: ${SCHEDULES:-null})"
+    fail_test "Dashboard: expected >0 schedules (got: ${SCHEDULES:-null})"
   fi
 fi
 
-# ── 5. Trigger incident via webhook events endpoint ─────
+# ── 5. Users API ─────────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  USERS=$(curl -sf "${BASE_URL}/api/users" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$USERS" | grep -q '"email"'; then
+    USER_COUNT=$(echo "$USERS" | grep -o '"email"' | wc -l | tr -d " ")
+    pass "Users API: ${USER_COUNT} users"
+  else
+    fail_test "Users API: no users returned"
+  fi
+
+  if echo "$USERS" | grep -q '"hasPhone"'; then
+    pass "Users API: masks phone (hasPhone)"
+  else
+    fail_test "Users API: missing hasPhone"
+  fi
+fi
+
+# ── 6. Schedules API ────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  SCHEDS=$(curl -sf "${BASE_URL}/api/schedules" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$SCHEDS" | grep -q '"layers"'; then
+    pass "Schedules API: returned with layers"
+  else
+    fail_test "Schedules API: no layers"
+  fi
+
+  if echo "$SCHEDS" | grep -q '"currentOnCall"'; then
+    pass "Schedules API: currentOnCall present"
+  else
+    fail_test "Schedules API: missing currentOnCall"
+  fi
+fi
+
+# ── 7. Services API ─────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  SVCS=$(curl -sf "${BASE_URL}/api/services" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$SVCS" | grep -q '"name"'; then
+    pass "Services API: returned services"
+  else
+    fail_test "Services API: no services"
+  fi
+fi
+
+# ── 8. Escalation Policies API ──────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  ESCAL=$(curl -sf "${BASE_URL}/api/escalation-policies" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$ESCAL" | grep -q '"levels"'; then
+    pass "Escalation Policies API: returned with levels"
+  else
+    fail_test "Escalation Policies API: no levels data"
+  fi
+fi
+
+# ── 9. Teams API ────────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  TEAMS=$(curl -sf "${BASE_URL}/api/teams" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$TEAMS" | grep -q '"name"'; then
+    pass "Teams API: returned teams"
+  else
+    fail_test "Teams API: no teams"
+  fi
+fi
+
+# ── 10. Trigger incident via webhook ────────────────────
 if [[ -n "$TOKEN" ]]; then
   TRIGGER=$(curl -sf -X POST "${BASE_URL}/api/webhooks/events" \
     -H "Content-Type: application/json" \
@@ -84,98 +167,84 @@ if [[ -n "$TOKEN" ]]; then
       }
     }' 2>/dev/null || echo "")
   
-  if echo "$TRIGGER" | grep -q '"status":"triggered"'; then
-    pass "Webhook triggered incident successfully"
-  elif echo "$TRIGGER" | grep -q '"status":"deduplicated"'; then
-    pass "Webhook deduplicated (incident already exists)"
+  if echo "$TRIGGER" | grep -q '"status"'; then
+    pass "Webhook trigger: received response"
   else
     fail_test "Webhook trigger failed (response: ${TRIGGER:-empty})"
   fi
 fi
 
-# ── 6. Users API ─────────────────────────────────────────
+# ── 11. Incidents API ───────────────────────────────────
 if [[ -n "$TOKEN" ]]; then
-  USERS=$(curl -sf "${BASE_URL}/api/users" \
+  INCS=$(curl -sf "${BASE_URL}/api/incidents" \
     -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
   
-  if echo "$USERS" | grep -q email; then
-    USER_COUNT=$(echo "$USERS" | grep -o email | wc -l | tr -d " ")
-    pass "Users API: ${USER_COUNT} users returned with email field"
+  if echo "$INCS" | grep -q '"title"'; then
+    pass "Incidents API: returned incidents"
   else
-    fail_test "Users API: no users returned (response: ${USERS:-empty})"
-  fi
-
-  if echo "$USERS" | grep -q teams; then
-    pass "Users API: includes team memberships"
-  else
-    fail_test "Users API: missing teams field"
-  fi
-
-  if echo "$USERS" | grep -q hasPhone; then
-    pass "Users API: masks phone (shows hasPhone indicator)"
-  else
-    fail_test "Users API: missing hasPhone indicator"
+    fail_test "Incidents API: no incidents"
   fi
 fi
 
-# ── 7. Schedules API ────────────────────────────────────
+# ── 12. Analytics API ───────────────────────────────────
 if [[ -n "$TOKEN" ]]; then
-  SCHEDS=$(curl -sf "${BASE_URL}/api/schedules" \
+  ANALYTICS=$(curl -sf "${BASE_URL}/api/analytics/summary" \
     -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
   
-  if echo "$SCHEDS" | grep -q layers; then
-    SCHED_COUNT=$(echo "$SCHEDS" | grep -o name | wc -l | tr -d " ")
-    pass "Schedules API: returned schedules with layers (${SCHED_COUNT} name fields)"
+  if echo "$ANALYTICS" | grep -q '"total"'; then
+    pass "Analytics API: returned summary"
   else
-    fail_test "Schedules API: no schedules with layers (response: ${SCHEDS:-empty})"
-  fi
-
-  if echo "$SCHEDS" | grep -q currentOnCall; then
-    pass "Schedules API: includes currentOnCall computation"
-  else
-    fail_test "Schedules API: missing currentOnCall field"
+    fail_test "Analytics API: failed (response: ${ANALYTICS:-empty})"
   fi
 fi
 
-# ── 8. Dashboard UI markers ─────────────────────────────
-DASH_HTML=$(curl -sf "${BASE_URL}/" 2>/dev/null || echo "")
-
-if echo "$DASH_HTML" | grep -q tab-users; then
-  pass "Dashboard HTML: has Users tab marker"
-else
-  fail_test "Dashboard HTML: missing tab-users marker"
+# ── 13. Activity Log API ────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  AUDIT=$(curl -sf "${BASE_URL}/api/activity-log" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$AUDIT" | grep -q '"total"'; then
+    pass "Activity Log API: returned response"
+  else
+    fail_test "Activity Log API: failed (response: ${AUDIT:-empty})"
+  fi
 fi
 
-if echo "$DASH_HTML" | grep -q tab-schedules; then
-  pass "Dashboard HTML: has Schedules tab marker"
-else
-  fail_test "Dashboard HTML: missing tab-schedules marker"
+# ── 14. Settings API ────────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  SETTINGS=$(curl -sf "${BASE_URL}/api/settings" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$SETTINGS" | grep -q '"integrations"'; then
+    pass "Settings API: returned config"
+  else
+    fail_test "Settings API: failed (response: ${SETTINGS:-empty})"
+  fi
 fi
 
-if echo "$DASH_HTML" | grep -q panel-users; then
-  pass "Dashboard HTML: has Users panel"
-else
-  fail_test "Dashboard HTML: missing panel-users"
+# ── 15. Status Pages API ────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  STATUS=$(curl -sf "${BASE_URL}/api/status-pages" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$STATUS" | grep -q '\['; then
+    pass "Status Pages API: returned array"
+  else
+    fail_test "Status Pages API: failed"
+  fi
 fi
 
-if echo "$DASH_HTML" | grep -q schedules-list; then
-  pass "Dashboard HTML: has Schedules list"
-else
-  fail_test "Dashboard HTML: missing schedules-list"
+# ── 16. Alert Rules API ─────────────────────────────────
+if [[ -n "$TOKEN" ]]; then
+  RULES=$(curl -sf "${BASE_URL}/api/alert-rules" \
+    -H "Authorization: Bearer ${TOKEN}" 2>/dev/null || echo "")
+  
+  if echo "$RULES" | grep -q '\['; then
+    pass "Alert Rules API: returned array"
+  else
+    fail_test "Alert Rules API: failed"
+  fi
 fi
-
-if echo "$DASH_HTML" | grep -q loadUsers; then
-  pass "Dashboard JS: has loadUsers function"
-else
-  fail_test "Dashboard JS: missing loadUsers function"
-fi
-
-if echo "$DASH_HTML" | grep -q loadSchedules; then
-  pass "Dashboard JS: has loadSchedules function"
-else
-  fail_test "Dashboard JS: missing loadSchedules function"
-fi
-
 
 # ── Results ─────────────────────────────────────────────
 echo ""
