@@ -214,3 +214,41 @@ src/
 ## License
 
 MIT
+
+## PagerDuty Import
+
+Import your PagerDuty configuration (users, teams, services, schedules, escalation policies) into eos-oncallers.
+
+### Export from PagerDuty
+
+The export script uses the PagerDuty REST API to fetch all configuration data. It requires a PagerDuty API token (read-only access is sufficient).
+
+The exported data is saved to `data/pagerduty-export.json` with sensitive fields (phone numbers, notification contacts) stripped.
+
+### Import into eos-oncallers
+
+```bash
+# Import the PagerDuty export into the database
+npm run db:import-pd
+
+# Or with a custom export path
+npx tsx src/scripts/import-pagerduty.ts path/to/export.json
+```
+
+### What gets imported
+
+| PagerDuty Entity | eos-oncallers Entity | Key Mapping |
+|-----------------|---------------------|-------------|
+| Users | Users | email (unique), role mapped: admin/owner→ADMIN, manager→GROUP_LEADER, others→USER |
+| Teams | Teams | name (unique) |
+| Services | Services | name (unique), linked to team + escalation policy |
+| Schedules | Schedules + Layers + Members | name (unique), layers with rotation type and members |
+| Escalation Policies | EscalationPolicy + Levels + Targets | name (unique), levels with delay and user/schedule targets |
+
+### Idempotency
+
+The import is fully idempotent — running it multiple times produces the same result. It uses upsert operations keyed on unique fields (email for users, name for teams/services/schedules/policies).
+
+### Default password
+
+Imported users receive the default password `changeme123!`. Users should change their password on first login.

@@ -16,7 +16,8 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:reset": "prisma migrate reset --force",
     "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down"
+    "docker:down": "docker compose down",
+    "db:import-pd": "tsx src/scripts/import-pagerduty.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.3.0",

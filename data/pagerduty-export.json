@@ -1,0 +1,3870 @@
+{
+  "exported_at": "2026-05-05T07:25:25.705934Z",
+  "source": "PagerDuty (eshos.eu.pagerduty.com)",
+  "counts": {
+    "users": 34,
+    "services": 40,
+    "schedules": 19,
+    "escalation_policies": 51,
+    "teams": 20
+  },
+  "users": [
+    {
+      "id": "PGLU1Z7",
+      "name": "Achimeir Shenwald",
+      "email": "achimeir@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ]
+    },
+    {
+      "id": "PPD1TZK",
+      "name": "Adi Tzurdecker",
+      "email": "adi.t@esh.com",
+      "role": "admin",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        },
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        },
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        },
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        },
+        {
+          "id": "PC38J39",
+          "summary": "Reviewers"
+        },
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        },
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        },
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        },
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        },
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        },
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        },
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ]
+    },
+    {
+      "id": "PZYBO91",
+      "name": "Arie Keren",
+      "email": "arie@esh.com",
+      "role": "user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        },
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PDM7NMW",
+      "name": "Dor Alon",
+      "email": "dor@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PT780H6",
+      "name": "Elad Shani",
+      "email": "elads@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ]
+    },
+    {
+      "id": "PGAPEOK",
+      "name": "Elior Ashkenazi",
+      "email": "elior@esh.com",
+      "role": "owner",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": "IT Help Desk",
+      "teams": [
+        {
+          "id": "PN1W6DQ",
+          "summary": "IT"
+        }
+      ]
+    },
+    {
+      "id": "PF9SSHL",
+      "name": "Hagit Muskatel",
+      "email": "hagit.m@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        },
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ]
+    },
+    {
+      "id": "P3BXB86",
+      "name": "Harel Rozental",
+      "email": "h.rozental@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ]
+    },
+    {
+      "id": "P3IXX34",
+      "name": "Idan Levi",
+      "email": "idan@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ]
+    },
+    {
+      "id": "PL53WS6",
+      "name": "Jonathan Pick",
+      "email": "pickjonathan@esh.com",
+      "role": "admin",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ]
+    },
+    {
+      "id": "PWRP8S1",
+      "name": "Lilach Ritter",
+      "email": "lilach@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PEVI2Y8",
+      "name": "Lion Erez",
+      "email": "lion@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        },
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        },
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ]
+    },
+    {
+      "id": "PNAW04U",
+      "name": "Ludmila Portugeis",
+      "email": "ludmila.p@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "P9DLR4Y",
+      "name": "Meital Weiss Sudar",
+      "email": "meital@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "P03B8M2",
+      "name": "Meizy Cohen",
+      "email": "meizy.cohen@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ]
+    },
+    {
+      "id": "P7PNNQF",
+      "name": "Michal Andelman",
+      "email": "michal.andelman@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ]
+    },
+    {
+      "id": "P2BSEJT",
+      "name": "Michal Sigalov",
+      "email": "michal.s@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        },
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ]
+    },
+    {
+      "id": "P2XKXZD",
+      "name": "Miri Kesner",
+      "email": "miri.k@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PHFNPNC",
+      "name": "Nadav Spitzer",
+      "email": "nadav.s@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": "Developer",
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PQIAU94",
+      "name": "NOC Team",
+      "email": "noc@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ]
+    },
+    {
+      "id": "PKHJCU2",
+      "name": "Ohad Schwarz",
+      "email": "ohad@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ]
+    },
+    {
+      "id": "PIMK999",
+      "name": "Oshrat Shlomovich",
+      "email": "oshrats@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ]
+    },
+    {
+      "id": "PC35CZH",
+      "name": "Rami Kantor",
+      "email": "rami.kantor@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ]
+    },
+    {
+      "id": "P9FOJ6W",
+      "name": "Roee Cohen",
+      "email": "roee.c@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PUF700C",
+      "name": "Sarah Zwickler",
+      "email": "sarah.z@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PLQQDIA",
+      "name": "Shay Kremer",
+      "email": "shayk@esh.com",
+      "role": "admin",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        },
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        },
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        },
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        },
+        {
+          "id": "PC38J39",
+          "summary": "Reviewers"
+        },
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        },
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        },
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        },
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        },
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        },
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        },
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ]
+    },
+    {
+      "id": "PE5MOYP",
+      "name": "Shir Goldman",
+      "email": "shirg@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PTAL0U5",
+      "name": "Tal Moran",
+      "email": "tal.moran@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        },
+        {
+          "id": "PC38J39",
+          "summary": "Reviewers"
+        },
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        },
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ]
+    },
+    {
+      "id": "P4XZ21I",
+      "name": "Tzahi Cohen",
+      "email": "tzahi.cohen@esh.com",
+      "role": "user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P6S8610",
+          "summary": "Account Managers"
+        }
+      ]
+    },
+    {
+      "id": "P0H50HQ",
+      "name": "Yahav Hamburg",
+      "email": "yahav.h@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ]
+    },
+    {
+      "id": "PA6XMHT",
+      "name": "Yaniv Shay",
+      "email": "yaniv.shay@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PJZWMLU",
+      "name": "Yaniv Shlomi",
+      "email": "yaniv.shlomi@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ]
+    },
+    {
+      "id": "PKDKBNE",
+      "name": "Yevgeni Kabisher",
+      "email": "yevgeni.k@esh.com",
+      "role": "user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PVMVI9C",
+      "name": "Ziv Farjun",
+      "email": "ziv@esh.com",
+      "role": "limited_user",
+      "time_zone": "Asia/Jerusalem",
+      "job_title": null,
+      "teams": [
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        }
+      ]
+    }
+  ],
+  "teams": [
+    {
+      "id": "P6S8610",
+      "name": "Account Managers",
+      "description": null
+    },
+    {
+      "id": "PETX474",
+      "name": "Architects",
+      "description": null
+    },
+    {
+      "id": "P0Z8TH2",
+      "name": "BE Clan",
+      "description": null
+    },
+    {
+      "id": "PFCWJFZ",
+      "name": "Communication",
+      "description": null
+    },
+    {
+      "id": "PI2I4JU",
+      "name": "Credit",
+      "description": null
+    },
+    {
+      "id": "PLC65YH",
+      "name": "Daily Banking",
+      "description": null
+    },
+    {
+      "id": "PV0P5SA",
+      "name": "Data",
+      "description": null
+    },
+    {
+      "id": "P2FK5OA",
+      "name": "Devops",
+      "description": null
+    },
+    {
+      "id": "P48WUWS",
+      "name": "FE Clan",
+      "description": null
+    },
+    {
+      "id": "PN1W6DQ",
+      "name": "IT",
+      "description": null
+    },
+    {
+      "id": "PA5NEMS",
+      "name": "Loans",
+      "description": null
+    },
+    {
+      "id": "PJDFEM1",
+      "name": "Mobile Clan",
+      "description": null
+    },
+    {
+      "id": "PZNZ7EQ",
+      "name": "NOC",
+      "description": null
+    },
+    {
+      "id": "PWVMEN2",
+      "name": "Pay",
+      "description": null
+    },
+    {
+      "id": "PAH93UE",
+      "name": "Platform Engines",
+      "description": null
+    },
+    {
+      "id": "PYTKIQJ",
+      "name": "Product Studio",
+      "description": null
+    },
+    {
+      "id": "PC38J39",
+      "name": "Reviewers",
+      "description": null
+    },
+    {
+      "id": "PUHZHBW",
+      "name": "Roles",
+      "description": null
+    },
+    {
+      "id": "PR8OGM6",
+      "name": "Screening",
+      "description": null
+    },
+    {
+      "id": "P0KVA1I",
+      "name": "Swift",
+      "description": "Team for Swift with single user on-call"
+    }
+  ],
+  "services": [
+    {
+      "id": "P8XXH43",
+      "name": "BE General-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P9Q4RXT",
+        "summary": "BE General mimic ep"
+      },
+      "teams": [
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PISJO6C",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "BE General-mimic"
+        },
+        {
+          "id": "PTSIVH4",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "BE General-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PWSUJ86",
+      "name": "BE General-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PTYDSM6",
+        "summary": "BE General production ep"
+      },
+      "teams": [
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PXXM92Z",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "BE General-production"
+        },
+        {
+          "id": "P47L4YK",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "BE General-production"
+        }
+      ]
+    },
+    {
+      "id": "P4L9GRD",
+      "name": "Communication-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PHRTPDX",
+        "summary": "Communication mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P6F9PO8",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Communication-mimic"
+        },
+        {
+          "id": "PENFXL7",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Communication-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PSG6IVG",
+      "name": "Communication-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PI2LVFZ",
+        "summary": "Communication production ep"
+      },
+      "teams": [
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PQPQ7AJ",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Communication-production"
+        },
+        {
+          "id": "PF72KSP",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Communication-production"
+        }
+      ]
+    },
+    {
+      "id": "PI9J562",
+      "name": "Credit-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PSK89K4",
+        "summary": "Credit mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PXH0T7K",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Credit-mimic"
+        },
+        {
+          "id": "PPGXV4E",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Credit-mimic"
+        }
+      ]
+    },
+    {
+      "id": "P16BADD",
+      "name": "Credit-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PUN8Z18",
+        "summary": "Credit production ep"
+      },
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P09KZ4U",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Credit-production"
+        },
+        {
+          "id": "PMSBLH2",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Credit-production"
+        }
+      ]
+    },
+    {
+      "id": "P6Z96NY",
+      "name": "Daily Banking-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PGCL6BV",
+        "summary": "Daily Banking mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P6PFQRU",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Daily Banking-mimic"
+        },
+        {
+          "id": "PHK3YAX",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Daily Banking-mimic"
+        }
+      ]
+    },
+    {
+      "id": "P7DFW3R",
+      "name": "Daily Banking-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P2G0W7F",
+        "summary": "Daily Banking production ep"
+      },
+      "teams": [
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PNTPV6V",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Daily Banking-production"
+        },
+        {
+          "id": "PJUJ46E",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Daily Banking-production"
+        }
+      ]
+    },
+    {
+      "id": "P2ML5Y8",
+      "name": "Data-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PG1T0ZT",
+        "summary": "Data mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P9M3R3H",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Data-mimic"
+        },
+        {
+          "id": "P9IEAUT",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Data-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PCHOZZ7",
+      "name": "Data-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P3UVC9H",
+        "summary": "Data production ep"
+      },
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PYO9XNY",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Data-production"
+        },
+        {
+          "id": "POTX60A",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Data-production"
+        }
+      ]
+    },
+    {
+      "id": "PTFB2PZ",
+      "name": "Devops-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P24VQ5D",
+        "summary": "Devops mimic ep"
+      },
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P71NWTW",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Devops-mimic"
+        },
+        {
+          "id": "PLWRZPK",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Devops-mimic"
+        }
+      ]
+    },
+    {
+      "id": "P44UVR1",
+      "name": "Devops-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P8042TP",
+        "summary": "Devops production ep"
+      },
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PUBLWY8",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Devops-production"
+        },
+        {
+          "id": "P0YA3JX",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Devops-production"
+        }
+      ]
+    },
+    {
+      "id": "P1OLFCQ",
+      "name": "FE General-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PA5HOOH",
+        "summary": "FE General mimic ep"
+      },
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PM27OJ2",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "FE General-mimic"
+        },
+        {
+          "id": "PXDBCYW",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "FE General-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PCMYEXH",
+      "name": "FE General-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PBVHASL",
+        "summary": "FE General production ep"
+      },
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PEGYNUP",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "FE General-production"
+        },
+        {
+          "id": "PBXEJCM",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "FE General-production"
+        }
+      ]
+    },
+    {
+      "id": "PO9HJ8R",
+      "name": "Lion General-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P3H10ZB",
+        "summary": "Lion General mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P9M9E0B",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Lion General-mimic"
+        },
+        {
+          "id": "PX26WWU",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Lion General-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PZ4ELPU",
+      "name": "Lion General-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PG665X7",
+        "summary": "Lion General production ep"
+      },
+      "teams": [
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PXH6G4E",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Lion General-production"
+        },
+        {
+          "id": "P75DM98",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Lion General-production"
+        }
+      ]
+    },
+    {
+      "id": "PB1N3EP",
+      "name": "Loans-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PZUP59F",
+        "summary": "Loans mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PC4GZMP",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Loans-mimic"
+        },
+        {
+          "id": "P5XLTD1",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Loans-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PVYCY7U",
+      "name": "Loans-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PIETBHB",
+        "summary": "Loans production ep"
+      },
+      "teams": [
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PBKXXML",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Loans-production"
+        },
+        {
+          "id": "PC9N2F1",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Loans-production"
+        }
+      ]
+    },
+    {
+      "id": "PLHR330",
+      "name": "Mobile General-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PDA4ZCO",
+        "summary": "Mobile General mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PLFAMLI",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Mobile General-mimic"
+        },
+        {
+          "id": "PQV2B6G",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Mobile General-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PICINJ0",
+      "name": "Mobile General-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PQPV7ZH",
+        "summary": "Mobile General production ep"
+      },
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PLYD761",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Mobile General-production"
+        },
+        {
+          "id": "PV0B1QO",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Mobile General-production"
+        }
+      ]
+    },
+    {
+      "id": "PF1NV94",
+      "name": "NOC reoccurring events",
+      "description": "Alerts about known certificates changes and other reoccurring events that needs the company attention",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PSQCY1G",
+        "summary": "Test-ep"
+      },
+      "teams": [],
+      "integrations": [
+        {
+          "id": "PKKIU3Y",
+          "type": "generic_email_inbound_integration_reference",
+          "summary": "Email"
+        },
+        {
+          "id": "PZPA9IW",
+          "type": "app_event_transform_inbound_integration_reference",
+          "summary": "PagerDuty StatusPages"
+        }
+      ]
+    },
+    {
+      "id": "PM6QXIW",
+      "name": "NOC-automations",
+      "description": "Service for NOC's automations systems and tools",
+      "status": "critical",
+      "escalation_policy": {
+        "id": "PBDL31Y",
+        "summary": "NOC staging ep"
+      },
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PXM4JD1",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Datadog"
+        }
+      ]
+    },
+    {
+      "id": "PHTHSXS",
+      "name": "NOC-demo",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PSQCY1G",
+        "summary": "Test-ep"
+      },
+      "teams": [],
+      "integrations": [
+        {
+          "id": "PZTYFQP",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-demo"
+        }
+      ]
+    },
+    {
+      "id": "P04XN0X",
+      "name": "NOC-dev",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PSQCY1G",
+        "summary": "Test-ep"
+      },
+      "teams": [],
+      "integrations": [
+        {
+          "id": "PFBX485",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-dev"
+        }
+      ]
+    },
+    {
+      "id": "PBGKIQW",
+      "name": "NOC-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P8BZ8VR",
+        "summary": "NOC mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PE7CA7T",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-mimic"
+        },
+        {
+          "id": "PU4QBJ6",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-mimic"
+        }
+      ]
+    },
+    {
+      "id": "P44QPYK",
+      "name": "NOC-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P0EV11Z",
+        "summary": "NOC production ep"
+      },
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PO1LIYT",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-production"
+        },
+        {
+          "id": "PFIY3UR",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-production"
+        }
+      ]
+    },
+    {
+      "id": "P2GZ3NG",
+      "name": "NOC-tickets",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P0EV11Z",
+        "summary": "NOC production ep"
+      },
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "P1QVMJZ",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-tickets"
+        },
+        {
+          "id": "P7H95ON",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "NOC-tickets"
+        }
+      ]
+    },
+    {
+      "id": "PLJ75IS",
+      "name": "Pay-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PS8D3I2",
+        "summary": "Pay mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PI0SP9L",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Pay-mimic"
+        },
+        {
+          "id": "PABUX8H",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Pay-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PRMRXV4",
+      "name": "Pay-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PN1ZXZV",
+        "summary": "Pay production ep"
+      },
+      "teams": [
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PCZ2E20",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Pay-production"
+        },
+        {
+          "id": "P3WSLWI",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Pay-production"
+        }
+      ]
+    },
+    {
+      "id": "PQGPM5T",
+      "name": "Product Studio-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PLSEB7J",
+        "summary": "Product Studio mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PR5JPX5",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Product Studio-mimic"
+        },
+        {
+          "id": "P1LAT0B",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Product Studio-mimic"
+        }
+      ]
+    },
+    {
+      "id": "P640L3E",
+      "name": "Product Studio-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PH4LUTU",
+        "summary": "Product Studio production ep"
+      },
+      "teams": [
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PM78ND9",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Product Studio-production"
+        },
+        {
+          "id": "PYZM22B",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Product Studio-production"
+        }
+      ]
+    },
+    {
+      "id": "PUR04ID",
+      "name": "Production - file isolation detected",
+      "description": "A file was identified as a threat and was moved to isolated folder",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P0EV11Z",
+        "summary": "NOC production ep"
+      },
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PH56GD7",
+          "type": "generic_email_inbound_integration_reference",
+          "summary": "Email"
+        }
+      ]
+    },
+    {
+      "id": "PGYJFN7",
+      "name": "Roles-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PYFGM7D",
+        "summary": "Roles mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PNRXQ0Y",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Roles-mimic"
+        },
+        {
+          "id": "P979USR",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Roles-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PA1FJKW",
+      "name": "Roles-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PAHPUQJ",
+        "summary": "Roles production ep"
+      },
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PTLB8Q9",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Roles-production"
+        },
+        {
+          "id": "PRRQ0AL",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Roles-production"
+        }
+      ]
+    },
+    {
+      "id": "POE1R8P",
+      "name": "Screening-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PBNGEID",
+        "summary": "Screening mimic ep"
+      },
+      "teams": [
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PPMCOK5",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Screening-mimic"
+        },
+        {
+          "id": "P69TZF3",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Screening-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PSQPRKC",
+      "name": "Screening-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PIWSGNT",
+        "summary": "Screening production ep"
+      },
+      "teams": [
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PAHZR18",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Screening-production"
+        },
+        {
+          "id": "PIGQL4C",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Screening-production"
+        }
+      ]
+    },
+    {
+      "id": "PT761UK",
+      "name": "Swift-mimic",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PZLC8OF",
+        "summary": "Swift mimic ep"
+      },
+      "teams": [
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PN9DA0W",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Swift-mimic"
+        }
+      ]
+    },
+    {
+      "id": "PNW19SH",
+      "name": "Swift-production",
+      "description": "Managed by Terraform",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P6SLAP6",
+        "summary": "Swift production ep"
+      },
+      "teams": [
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PLKQYJ0",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Swift-production"
+        }
+      ]
+    },
+    {
+      "id": "P7NAU3G",
+      "name": "Test",
+      "description": "This service is for testing purposes ",
+      "status": "active",
+      "escalation_policy": {
+        "id": "P8SAGXQ",
+        "summary": "old Test datadog-ep"
+      },
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ],
+      "integrations": [
+        {
+          "id": "PJXPC03",
+          "type": "app_event_transform_inbound_integration_reference",
+          "summary": "Coralogix"
+        },
+        {
+          "id": "PL3ZG7Z",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Datadog"
+        },
+        {
+          "id": "P7UXBHD",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Test - Datadog"
+        },
+        {
+          "id": "P3I9B5Q",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Test - Datadog"
+        },
+        {
+          "id": "PQQCRHW",
+          "type": "event_transformer_api_inbound_integration_reference",
+          "summary": "Slack to PagerDuty (Legacy)"
+        },
+        {
+          "id": "PUN0UA6",
+          "type": "generic_events_api_inbound_integration_reference",
+          "summary": "Datadog"
+        }
+      ]
+    },
+    {
+      "id": "PDSOASH",
+      "name": "Zendesk",
+      "description": "service for creating tickets in zendesk, and sending updates",
+      "status": "active",
+      "escalation_policy": {
+        "id": "PJE9NZH",
+        "summary": "Zendesk-ep"
+      },
+      "teams": [],
+      "integrations": [
+        {
+          "id": "PSUW6ZO",
+          "type": "generic_email_inbound_integration_reference",
+          "summary": "Email"
+        }
+      ]
+    }
+  ],
+  "schedules": [
+    {
+      "id": "PQWXG06",
+      "name": "Arie General",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [],
+      "users": [
+        {
+          "id": "PZYBO91",
+          "summary": "Arie Keren"
+        }
+      ]
+    },
+    {
+      "id": "PB9EKMZ",
+      "name": "BE customization",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [],
+      "users": [
+        {
+          "id": "P2BSEJT",
+          "summary": "Michal Sigalov"
+        },
+        {
+          "id": "PAJX1II",
+          "summary": "Liav Daniel"
+        }
+      ]
+    },
+    {
+      "id": "PWRDEFV",
+      "name": "BE General",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ],
+      "users": [
+        {
+          "id": "PZYBO91",
+          "summary": "Arie Keren"
+        }
+      ]
+    },
+    {
+      "id": "P1MCHOE",
+      "name": "Communication",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        }
+      ],
+      "users": [
+        {
+          "id": "PTAL0U5",
+          "summary": "Tal Moran"
+        },
+        {
+          "id": "PF9SSHL",
+          "summary": "Hagit Muskatel"
+        },
+        {
+          "id": "PB90LNF",
+          "summary": "Aviv Avitan"
+        }
+      ]
+    },
+    {
+      "id": "P2PAF49",
+      "name": "Credit-dev",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ],
+      "users": [
+        {
+          "id": "PGLU1Z7",
+          "summary": "Achimeir Shenwald"
+        },
+        {
+          "id": "PC35CZH",
+          "summary": "Rami Kantor"
+        },
+        {
+          "id": "P3BXB86",
+          "summary": "Harel Rozental"
+        },
+        {
+          "id": "PZ1HACG",
+          "summary": "Ori Markovitch"
+        },
+        {
+          "id": "PQIAU94",
+          "summary": "NOC Team"
+        },
+        {
+          "id": "PA0A94R",
+          "summary": "Udi Ashkenazi"
+        },
+        {
+          "id": "PXN916V",
+          "summary": "Elad Yaniv"
+        },
+        {
+          "id": "PREJS4T",
+          "summary": "Noemie Ben Denoun"
+        }
+      ]
+    },
+    {
+      "id": "PDAS3DP",
+      "name": "Credit-QA",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ],
+      "users": [
+        {
+          "id": "PIMK999",
+          "summary": "Oshrat Shlomovich"
+        },
+        {
+          "id": "P03B8M2",
+          "summary": "Meizy Cohen"
+        },
+        {
+          "id": "P7PNNQF",
+          "summary": "Michal Andelman"
+        },
+        {
+          "id": "P3CM9BS",
+          "summary": "Olga Voltynyuk"
+        }
+      ]
+    },
+    {
+      "id": "P9QUA3J",
+      "name": "Daily Banking",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ],
+      "users": [
+        {
+          "id": "PUF700C",
+          "summary": "Sarah Zwickler"
+        },
+        {
+          "id": "P2XKXZD",
+          "summary": "Miri Kesner"
+        },
+        {
+          "id": "PA6XMHT",
+          "summary": "Yaniv Shay"
+        },
+        {
+          "id": "PNAW04U",
+          "summary": "Ludmila Portugeis"
+        },
+        {
+          "id": "PDM7NMW",
+          "summary": "Dor Alon"
+        },
+        {
+          "id": "PWRP8S1",
+          "summary": "Lilach Ritter"
+        },
+        {
+          "id": "PAJX1II",
+          "summary": "Liav Daniel"
+        },
+        {
+          "id": "PI563NY",
+          "summary": "Yuval Zilber"
+        },
+        {
+          "id": "P4F0BEN",
+          "summary": "Sarah Zwickler"
+        },
+        {
+          "id": "PQIAU94",
+          "summary": "NOC Team"
+        }
+      ]
+    },
+    {
+      "id": "PM2II9M",
+      "name": "Data",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ],
+      "users": [
+        {
+          "id": "PT780H6",
+          "summary": "Elad Shani"
+        },
+        {
+          "id": "PQIAU94",
+          "summary": "NOC Team"
+        }
+      ]
+    },
+    {
+      "id": "PTBD7NF",
+      "name": "Devops",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ],
+      "users": [
+        {
+          "id": "P0H50HQ",
+          "summary": "Yahav Hamburg"
+        },
+        {
+          "id": "PKHJCU2",
+          "summary": "Ohad Schwarz"
+        },
+        {
+          "id": "PL53WS6",
+          "summary": "Jonathan Pick"
+        },
+        {
+          "id": "PELGEOI",
+          "summary": "Gil Zellner"
+        }
+      ]
+    },
+    {
+      "id": "PA11FUI",
+      "name": "FE General",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ],
+      "users": [
+        {
+          "id": "PKDKBNE",
+          "summary": "Yevgeni Kabisher"
+        },
+        {
+          "id": "P9DLR4Y",
+          "summary": "Meital Weiss Sudar"
+        },
+        {
+          "id": "PHFNPNC",
+          "summary": "Nadav Spitzer"
+        },
+        {
+          "id": "P9FOJ6W",
+          "summary": "Roee Cohen"
+        },
+        {
+          "id": "P2VPPCI",
+          "summary": "Nadav Taoz"
+        },
+        {
+          "id": "PLRYQ02",
+          "summary": "Iftah Saar"
+        },
+        {
+          "id": "PEVI2Y8",
+          "summary": "Lion Erez"
+        },
+        {
+          "id": "PE5MOYP",
+          "summary": "Shir Goldman"
+        },
+        {
+          "id": "PAWBNIM",
+          "summary": "Or Sasson"
+        },
+        {
+          "id": "PWKQN6Z",
+          "summary": "Kira Menshov"
+        },
+        {
+          "id": "PH3F2V5",
+          "summary": "Michal Ittah"
+        }
+      ]
+    },
+    {
+      "id": "PU5IGCW",
+      "name": "Lion General",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        }
+      ],
+      "users": [
+        {
+          "id": "PEVI2Y8",
+          "summary": "Lion Erez"
+        }
+      ]
+    },
+    {
+      "id": "PQFR4JP",
+      "name": "Loans",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ],
+      "users": [
+        {
+          "id": "PGLU1Z7",
+          "summary": "Achimeir Shenwald"
+        },
+        {
+          "id": "PC35CZH",
+          "summary": "Rami Kantor"
+        },
+        {
+          "id": "PZ1HACG",
+          "summary": "Ori Markovitch"
+        },
+        {
+          "id": "PREJS4T",
+          "summary": "Noemie Ben Denoun"
+        },
+        {
+          "id": "PXOY8Q5",
+          "summary": "Ori Markovitch"
+        }
+      ]
+    },
+    {
+      "id": "PCRPUK8",
+      "name": "Mobile General",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ],
+      "users": [
+        {
+          "id": "P3IXX34",
+          "summary": "Idan Levi"
+        },
+        {
+          "id": "PEVI2Y8",
+          "summary": "Lion Erez"
+        },
+        {
+          "id": "PO46YUH",
+          "summary": "Jeffrey Ben"
+        },
+        {
+          "id": "PVPFZJX",
+          "summary": "Shelly Ambar"
+        },
+        {
+          "id": "P7UIXFU",
+          "summary": "Amit Ilan"
+        },
+        {
+          "id": "PRDUZ77",
+          "summary": "Roy Schonberg"
+        }
+      ]
+    },
+    {
+      "id": "PDFGGE7",
+      "name": "NOC",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        },
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        },
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        },
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        },
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        },
+        {
+          "id": "PAH93UE",
+          "summary": "Platform Engines"
+        },
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        },
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        },
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        },
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        },
+        {
+          "id": "PC38J39",
+          "summary": "Reviewers"
+        },
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        },
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        },
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        },
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        },
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        },
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        },
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ],
+      "users": [
+        {
+          "id": "PPD1TZK",
+          "summary": "Adi Tzurdecker"
+        },
+        {
+          "id": "PLQQDIA",
+          "summary": "Shay Kremer"
+        },
+        {
+          "id": "PL53WS6",
+          "summary": "Jonathan Pick"
+        },
+        {
+          "id": "PQIAU94",
+          "summary": "NOC Team"
+        },
+        {
+          "id": "PGBLJGG",
+          "summary": "Lee Rozen"
+        }
+      ]
+    },
+    {
+      "id": "PN6346M",
+      "name": "Pay",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ],
+      "users": [
+        {
+          "id": "P3BXB86",
+          "summary": "Harel Rozental"
+        },
+        {
+          "id": "PXN916V",
+          "summary": "Elad Yaniv"
+        }
+      ]
+    },
+    {
+      "id": "P0L6TNN",
+      "name": "Product Studio",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ],
+      "users": [
+        {
+          "id": "P9IR5TM",
+          "summary": "Miri Chanan"
+        },
+        {
+          "id": "PTAL0U5",
+          "summary": "Tal Moran"
+        },
+        {
+          "id": "PF9SSHL",
+          "summary": "Hagit Muskatel"
+        }
+      ]
+    },
+    {
+      "id": "P5Z0I14",
+      "name": "Reviewers",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PC38J39",
+          "summary": "Reviewers"
+        }
+      ],
+      "users": [
+        {
+          "id": "PTAL0U5",
+          "summary": "Tal Moran"
+        },
+        {
+          "id": "PB90LNF",
+          "summary": "Aviv Avitan"
+        }
+      ]
+    },
+    {
+      "id": "P98OIDU",
+      "name": "Roles",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        }
+      ],
+      "users": [
+        {
+          "id": "P2BSEJT",
+          "summary": "Michal Sigalov"
+        },
+        {
+          "id": "PTH70QE",
+          "summary": "Guy Nitzan"
+        },
+        {
+          "id": "P9IR5TM",
+          "summary": "Miri Chanan"
+        }
+      ]
+    },
+    {
+      "id": "PPHZJSH",
+      "name": "Screening",
+      "description": "",
+      "time_zone": "Asia/Jerusalem",
+      "schedule_layers": [],
+      "teams": [
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ],
+      "users": [
+        {
+          "id": "PTAL0U5",
+          "summary": "Tal Moran"
+        },
+        {
+          "id": "PTH70QE",
+          "summary": "Guy Nitzan"
+        },
+        {
+          "id": "P2BSEJT",
+          "summary": "Michal Sigalov"
+        },
+        {
+          "id": "PB90LNF",
+          "summary": "Aviv Avitan"
+        }
+      ]
+    }
+  ],
+  "escalation_policies": [
+    {
+      "id": "PIMJDIY",
+      "name": "BE customization ep",
+      "description": "",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PB9EKMZ",
+              "type": "schedule_reference",
+              "summary": "BE customization"
+            }
+          ]
+        }
+      ],
+      "teams": []
+    },
+    {
+      "id": "P9Q4RXT",
+      "name": "BE General mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PWRDEFV",
+              "type": "schedule_reference",
+              "summary": "BE General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PTYDSM6",
+      "name": "BE General production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PWRDEFV",
+              "type": "schedule_reference",
+              "summary": "BE General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ]
+    },
+    {
+      "id": "P065THP",
+      "name": "BE General staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PWRDEFV",
+              "type": "schedule_reference",
+              "summary": "BE General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P0Z8TH2",
+          "summary": "BE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PHRTPDX",
+      "name": "Communication mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P1MCHOE",
+              "type": "schedule_reference",
+              "summary": "Communication"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        }
+      ]
+    },
+    {
+      "id": "PI2LVFZ",
+      "name": "Communication production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P1MCHOE",
+              "type": "schedule_reference",
+              "summary": "Communication"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        }
+      ]
+    },
+    {
+      "id": "PM07OEH",
+      "name": "Communication staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P1MCHOE",
+              "type": "schedule_reference",
+              "summary": "Communication"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PFCWJFZ",
+          "summary": "Communication"
+        }
+      ]
+    },
+    {
+      "id": "PSK89K4",
+      "name": "Credit mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PDAS3DP",
+              "type": "schedule_reference",
+              "summary": "Credit-QA"
+            }
+          ]
+        },
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P2PAF49",
+              "type": "schedule_reference",
+              "summary": "Credit-dev"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ]
+    },
+    {
+      "id": "PUN8Z18",
+      "name": "Credit production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P2PAF49",
+              "type": "schedule_reference",
+              "summary": "Credit-dev"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ]
+    },
+    {
+      "id": "PE334O2",
+      "name": "Credit staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PDAS3DP",
+              "type": "schedule_reference",
+              "summary": "Credit-QA"
+            }
+          ]
+        },
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P2PAF49",
+              "type": "schedule_reference",
+              "summary": "Credit-dev"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PI2I4JU",
+          "summary": "Credit"
+        }
+      ]
+    },
+    {
+      "id": "PGCL6BV",
+      "name": "Daily Banking mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P9QUA3J",
+              "type": "schedule_reference",
+              "summary": "Daily Banking"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "P2G0W7F",
+      "name": "Daily Banking production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P9QUA3J",
+              "type": "schedule_reference",
+              "summary": "Daily Banking"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PFT3TS6",
+      "name": "Daily Banking staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P9QUA3J",
+              "type": "schedule_reference",
+              "summary": "Daily Banking"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PLC65YH",
+          "summary": "Daily Banking"
+        }
+      ]
+    },
+    {
+      "id": "PG1T0ZT",
+      "name": "Data mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PM2II9M",
+              "type": "schedule_reference",
+              "summary": "Data"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ]
+    },
+    {
+      "id": "P3UVC9H",
+      "name": "Data production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PM2II9M",
+              "type": "schedule_reference",
+              "summary": "Data"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ]
+    },
+    {
+      "id": "PY7US0T",
+      "name": "Data staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PM2II9M",
+              "type": "schedule_reference",
+              "summary": "Data"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PV0P5SA",
+          "summary": "Data"
+        }
+      ]
+    },
+    {
+      "id": "P24VQ5D",
+      "name": "Devops mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PTBD7NF",
+              "type": "schedule_reference",
+              "summary": "Devops"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ]
+    },
+    {
+      "id": "P8042TP",
+      "name": "Devops production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PTBD7NF",
+              "type": "schedule_reference",
+              "summary": "Devops"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ]
+    },
+    {
+      "id": "P7REV92",
+      "name": "Devops staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PTBD7NF",
+              "type": "schedule_reference",
+              "summary": "Devops"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P2FK5OA",
+          "summary": "Devops"
+        }
+      ]
+    },
+    {
+      "id": "PA5HOOH",
+      "name": "FE General mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PA11FUI",
+              "type": "schedule_reference",
+              "summary": "FE General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "PBVHASL",
+      "name": "FE General production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PA11FUI",
+              "type": "schedule_reference",
+              "summary": "FE General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "P6D9P70",
+      "name": "FE General staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PA11FUI",
+              "type": "schedule_reference",
+              "summary": "FE General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P48WUWS",
+          "summary": "FE Clan"
+        }
+      ]
+    },
+    {
+      "id": "P3H10ZB",
+      "name": "Lion General mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PU5IGCW",
+              "type": "schedule_reference",
+              "summary": "Lion General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        }
+      ]
+    },
+    {
+      "id": "PG665X7",
+      "name": "Lion General production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PU5IGCW",
+              "type": "schedule_reference",
+              "summary": "Lion General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        }
+      ]
+    },
+    {
+      "id": "PWHU2JP",
+      "name": "Lion General staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PU5IGCW",
+              "type": "schedule_reference",
+              "summary": "Lion General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PETX474",
+          "summary": "Architects"
+        }
+      ]
+    },
+    {
+      "id": "PZUP59F",
+      "name": "Loans mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PQFR4JP",
+              "type": "schedule_reference",
+              "summary": "Loans"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ]
+    },
+    {
+      "id": "PIETBHB",
+      "name": "Loans production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PQFR4JP",
+              "type": "schedule_reference",
+              "summary": "Loans"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ]
+    },
+    {
+      "id": "PEEYNQ4",
+      "name": "Loans staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PQFR4JP",
+              "type": "schedule_reference",
+              "summary": "Loans"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PA5NEMS",
+          "summary": "Loans"
+        }
+      ]
+    },
+    {
+      "id": "PDA4ZCO",
+      "name": "Mobile General mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PCRPUK8",
+              "type": "schedule_reference",
+              "summary": "Mobile General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ]
+    },
+    {
+      "id": "PQPV7ZH",
+      "name": "Mobile General production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PCRPUK8",
+              "type": "schedule_reference",
+              "summary": "Mobile General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ]
+    },
+    {
+      "id": "P61E64L",
+      "name": "Mobile General staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PCRPUK8",
+              "type": "schedule_reference",
+              "summary": "Mobile General"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PJDFEM1",
+          "summary": "Mobile Clan"
+        }
+      ]
+    },
+    {
+      "id": "P8BZ8VR",
+      "name": "NOC mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PDFGGE7",
+              "type": "schedule_reference",
+              "summary": "NOC"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ]
+    },
+    {
+      "id": "P0EV11Z",
+      "name": "NOC production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PDFGGE7",
+              "type": "schedule_reference",
+              "summary": "NOC"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ]
+    },
+    {
+      "id": "PBDL31Y",
+      "name": "NOC staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PDFGGE7",
+              "type": "schedule_reference",
+              "summary": "NOC"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ]
+    },
+    {
+      "id": "P8SAGXQ",
+      "name": "old Test datadog-ep",
+      "description": "",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PQIAU94",
+              "type": "user_reference",
+              "summary": "NOC Team"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PZNZ7EQ",
+          "summary": "NOC"
+        }
+      ]
+    },
+    {
+      "id": "PS8D3I2",
+      "name": "Pay mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PN6346M",
+              "type": "schedule_reference",
+              "summary": "Pay"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ]
+    },
+    {
+      "id": "PN1ZXZV",
+      "name": "Pay production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PN6346M",
+              "type": "schedule_reference",
+              "summary": "Pay"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ]
+    },
+    {
+      "id": "PLOC5CF",
+      "name": "Pay staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PN6346M",
+              "type": "schedule_reference",
+              "summary": "Pay"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PWVMEN2",
+          "summary": "Pay"
+        }
+      ]
+    },
+    {
+      "id": "PLSEB7J",
+      "name": "Product Studio mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P0L6TNN",
+              "type": "schedule_reference",
+              "summary": "Product Studio"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ]
+    },
+    {
+      "id": "PH4LUTU",
+      "name": "Product Studio production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P0L6TNN",
+              "type": "schedule_reference",
+              "summary": "Product Studio"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ]
+    },
+    {
+      "id": "PQNQ7WB",
+      "name": "Product Studio staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P0L6TNN",
+              "type": "schedule_reference",
+              "summary": "Product Studio"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PYTKIQJ",
+          "summary": "Product Studio"
+        }
+      ]
+    },
+    {
+      "id": "PYFGM7D",
+      "name": "Roles mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P98OIDU",
+              "type": "schedule_reference",
+              "summary": "Roles"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        }
+      ]
+    },
+    {
+      "id": "PAHPUQJ",
+      "name": "Roles production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P98OIDU",
+              "type": "schedule_reference",
+              "summary": "Roles"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        }
+      ]
+    },
+    {
+      "id": "PQLIQYD",
+      "name": "Roles staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "P98OIDU",
+              "type": "schedule_reference",
+              "summary": "Roles"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PUHZHBW",
+          "summary": "Roles"
+        }
+      ]
+    },
+    {
+      "id": "PBNGEID",
+      "name": "Screening mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PPHZJSH",
+              "type": "schedule_reference",
+              "summary": "Screening"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ]
+    },
+    {
+      "id": "PIWSGNT",
+      "name": "Screening production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PPHZJSH",
+              "type": "schedule_reference",
+              "summary": "Screening"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ]
+    },
+    {
+      "id": "PXVM8LR",
+      "name": "Screening staging ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PPHZJSH",
+              "type": "schedule_reference",
+              "summary": "Screening"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "PR8OGM6",
+          "summary": "Screening"
+        }
+      ]
+    },
+    {
+      "id": "PZLC8OF",
+      "name": "Swift mimic ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PI563NY",
+              "type": "user_reference",
+              "summary": "Yuval Zilber"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ]
+    },
+    {
+      "id": "P6SLAP6",
+      "name": "Swift production ep",
+      "description": "Managed by Terraform",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PDFGGE7",
+              "type": "schedule_reference",
+              "summary": "NOC"
+            }
+          ]
+        },
+        {
+          "escalation_delay_in_minutes": 15,
+          "targets": [
+            {
+              "id": "PDFGGE7",
+              "type": "schedule_reference",
+              "summary": "NOC"
+            }
+          ]
+        },
+        {
+          "escalation_delay_in_minutes": 1,
+          "targets": [
+            {
+              "id": "PLQQDIA",
+              "type": "user_reference",
+              "summary": "Shay Kremer"
+            }
+          ]
+        }
+      ],
+      "teams": [
+        {
+          "id": "P0KVA1I",
+          "summary": "Swift"
+        }
+      ]
+    },
+    {
+      "id": "PSQCY1G",
+      "name": "Test-ep",
+      "description": "",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PQIAU94",
+              "type": "user_reference",
+              "summary": "NOC Team"
+            }
+          ]
+        }
+      ],
+      "teams": []
+    },
+    {
+      "id": "PJE9NZH",
+      "name": "Zendesk-ep",
+      "description": "",
+      "num_loops": 0,
+      "escalation_rules": [
+        {
+          "escalation_delay_in_minutes": 30,
+          "targets": [
+            {
+              "id": "PQIAU94",
+              "type": "user_reference",
+              "summary": "NOC Team"
+            }
+          ]
+        }
+      ],
+      "teams": []
+    }
+  ]
+}
