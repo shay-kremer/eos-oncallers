@@ -1,18 +1,26 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 
 const prisma = new PrismaClient();
+
+function generatePassword(): string {
+  return crypto.randomBytes(12).toString('base64url').slice(0, 16);
+}
 
 async function main() {
   console.log('Seeding database...');
 
-  const adminHash = await bcrypt.hash('admin123!', 12);
-  const userHash = await bcrypt.hash('user123!', 12);
+  const adminEmail = process.env.SEED_ADMIN_EMAIL || 'admin@oncall.local';
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD || generatePassword();
+  const userPassword = process.env.SEED_USER_PASSWORD || generatePassword();
+  const adminHash = await bcrypt.hash(adminPassword, 12);
+  const userHash = await bcrypt.hash(userPassword, 12);
 
   const admin = await prisma.user.upsert({
-    where: { email: 'admin@oncall.local' },
+    where: { email: adminEmail },
     update: {},
-    create: { email: 'admin@oncall.local', name: 'Admin User', passwordHash: adminHash, role: 'ADMIN', phone: '+1234567890' },
+    create: { email: adminEmail, name: 'Admin User', passwordHash: adminHash, role: 'ADMIN', phone: '+1234567890' },
   });
 
   const leader = await prisma.user.upsert({
@@ -144,9 +152,9 @@ async function main() {
   });
 
   console.log('Seed complete!');
-  console.log(`  Admin: admin@oncall.local / admin123!`);
-  console.log(`  Leader: leader@oncall.local / user123!`);
-  console.log(`  Engineer: alice@oncall.local / user123!`);
+  console.log(`  Admin: ${adminEmail} / ${adminPassword}`);
+  console.log(`  Leader: leader@oncall.local / ${userPassword}`);
+  console.log(`  Engineers: alice@oncall.local, bob@oncall.local / ${userPassword}`);
   console.log(`  Integration key: demo-integration-key-001`);
 }
 

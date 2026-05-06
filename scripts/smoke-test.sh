@@ -48,7 +48,7 @@ done
 # ── 3. Login with admin credentials ────────────────────
 LOGIN=$(curl -sf -X POST "${BASE_URL}/api/auth/login" \
   -H "Content-Type: application/json" \
-  -d '{"email":"admin@oncall.local","password":"admin123!"}' 2>/dev/null || echo "")
+  -d "{\"email\":\"${SEED_ADMIN_EMAIL:-admin@oncall.local}\",\"password\":\"${SEED_ADMIN_PASSWORD:?Set SEED_ADMIN_PASSWORD env var}\"}" 2>/dev/null || echo "")
 TOKEN=$(echo "$LOGIN" | grep -o '"token":"[^"]*"' | cut -d'"' -f4)
 if [[ -n "$TOKEN" ]]; then
   pass "Login successful, got JWT token"

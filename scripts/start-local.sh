@@ -21,6 +21,11 @@ cd "$PROJECT_ROOT"
 
 PORT="${PORT:-3000}"
 
+# Generate seed credentials if not already set
+export SEED_ADMIN_EMAIL="${SEED_ADMIN_EMAIL:-admin@oncall.local}"
+export SEED_ADMIN_PASSWORD="${SEED_ADMIN_PASSWORD:-$(openssl rand -base64 12)}"
+export SEED_USER_PASSWORD="${SEED_USER_PASSWORD:-$(openssl rand -base64 12)}"
+
 # ── Check mode ──────────────────────────────────────────
 if [[ "${1:-}" == "--check" ]]; then
   echo "Running start:local preflight checks..."
@@ -55,8 +60,8 @@ if [[ -n "$EXISTING_PID" ]]; then
     echo -e " Health:       ${CYAN}http://localhost:${PORT}/health${NC}"
     echo ""
     echo -e " Login:        POST /api/auth/login"
-    echo -e "   admin:      admin@oncall.local / admin123!"
-    echo -e "   leader:     leader@oncall.local / user123!"
+    echo -e "   admin:      ${SEED_ADMIN_EMAIL} / ${SEED_ADMIN_PASSWORD}"
+    echo -e "   leader:     leader@oncall.local / ${SEED_USER_PASSWORD}"
     echo ""
     echo -e " To restart:   ${YELLOW}kill ${EXISTING_PID} && npm run start:local${NC}"
     echo ""
@@ -157,8 +162,8 @@ echo -e " URL:          ${CYAN}http://localhost:${PORT}${NC}"
 echo -e " Health:       ${CYAN}http://localhost:${PORT}/health${NC}"
 echo ""
 echo -e " Login:        POST /api/auth/login"
-echo -e "   admin:      admin@oncall.local / admin123!"
-echo -e "   leader:     leader@oncall.local / user123!"
+echo -e "   admin:      ${SEED_ADMIN_EMAIL} / ${SEED_ADMIN_PASSWORD}"
+echo -e "   leader:     leader@oncall.local / ${SEED_USER_PASSWORD}"
 echo ""
 echo -e " Stop:         ${YELLOW}Ctrl+C${NC}"
 echo ""
