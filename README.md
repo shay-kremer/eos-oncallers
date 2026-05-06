@@ -98,11 +98,10 @@ The dashboard provides a tabbed admin console with:
 
 ### Demo Login
 
-In development mode, credentials are shown on the login page:
-- **Email:** `admin@oncall.local`
-- **Password:** `admin123!`
-
-The integration key for triggering test incidents is displayed in the Integrations panel (dev only).
+Credentials are printed to terminal during `npm run start:local` or `npm run db:seed`.
+Configure via environment variables (see `.env.example`):
+- `SEED_ADMIN_EMAIL` — admin email (default: admin@oncall.local)
+- `SEED_ADMIN_PASSWORD` — admin password (auto-generated if not set)
 
 ### Full Docker setup (production-like)
 
@@ -112,14 +111,16 @@ docker compose up --build
 
 ## Default Credentials (seed data)
 
-| User | Email | Password | Role |
-|------|-------|----------|------|
-| Admin | admin@oncall.local | admin123! | ADMIN |
-| Leader | leader@oncall.local | user123! | GROUP_LEADER |
-| Alice | alice@oncall.local | user123! | USER |
-| Bob | bob@oncall.local | user123! | USER |
+Credentials are generated at seed time and printed to the terminal.
+To set explicit values, configure these env vars before running `npm run db:seed`:
 
-**Demo integration key:** `demo-integration-key-001`
+| Variable | Purpose | Default |
+|----------|---------|--------|
+| `SEED_ADMIN_EMAIL` | Admin login email | `admin@oncall.local` |
+| `SEED_ADMIN_PASSWORD` | Admin password | Auto-generated |
+| `SEED_USER_PASSWORD` | Other users password | Auto-generated |
+
+The demo integration key (`demo-integration-key-001`) is created for local testing only.
 
 ## API Endpoints
 
@@ -193,7 +194,7 @@ docker compose up --build
 curl -X POST http://localhost:3000/api/webhooks/events \
   -H "Content-Type: application/json" \
   -d '{
-    "routing_key": "demo-integration-key-001",
+    "routing_key": "<YOUR_INTEGRATION_KEY>",
     "event_action": "trigger",
     "dedup_key": "my-alert-123",
     "payload": {
@@ -207,7 +208,7 @@ curl -X POST http://localhost:3000/api/webhooks/events \
 curl -X POST http://localhost:3000/api/webhooks/events \
   -H "Content-Type: application/json" \
   -d '{
-    "routing_key": "demo-integration-key-001",
+    "routing_key": "<YOUR_INTEGRATION_KEY>",
     "event_action": "acknowledge",
     "dedup_key": "my-alert-123"
   }'
@@ -216,7 +217,7 @@ curl -X POST http://localhost:3000/api/webhooks/events \
 curl -X POST http://localhost:3000/api/webhooks/events \
   -H "Content-Type: application/json" \
   -d '{
-    "routing_key": "demo-integration-key-001",
+    "routing_key": "<YOUR_INTEGRATION_KEY>",
     "event_action": "resolve",
     "dedup_key": "my-alert-123"
   }'

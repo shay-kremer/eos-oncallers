@@ -83,4 +83,26 @@ describe('Dashboard HTML UI markers', () => {
     const res = await request(app).get('/');
     expect(res.text).toContain('loadSettings');
   });
+
+
+  describe('Security: no credentials in HTML', () => {
+    it('does not contain hardcoded passwords', async () => {
+      const res = await request(app).get('/');
+      expect(res.text).not.toContain('admin123');
+      expect(res.text).not.toContain('user123');
+    });
+
+    it('does not display "Dev credentials" text with password', async () => {
+      const res = await request(app).get('/');
+      expect(res.text).not.toMatch(/Dev credentials.*admin123/);
+      expect(res.text).not.toMatch(/password.*admin123/i);
+    });
+
+    it('does not expose any password-like patterns in login page', async () => {
+      const res = await request(app).get('/');
+      // Should not have any visible password value in the HTML source
+      expect(res.text).not.toMatch(/\/\s*<\/code>/);
+    });
+  });
+
 });
