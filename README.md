@@ -244,6 +244,9 @@ When env vars are not set, integrations log mock notifications instead of failin
 | `EADDRINUSE: address already in use :::3000` | Port 3000 already occupied | `lsof -ti :3000 \| xargs kill -9` then retry |
 | `prisma migrate deploy` fails with connection refused | Postgres container not healthy yet | `docker compose ps` — wait for `(healthy)` status |
 | `Environment variable not found: DATABASE_URL` | Missing .env file | Run `cp .env.example .env` or use `npm run start:local` which handles it automatically |
+| Login shows "Database unavailable" | Postgres is not running or unreachable | `docker compose up -d postgres` and retry |
+| Login shows "Connection error" | Server crashed or is not running | Check terminal for errors, restart with `npm run start:local` |
+| Browser shows stale app after code update | Cached token or old HTML | Clear localStorage: open DevTools → Application → Local Storage → delete `oncall_token`, then reload |
 
 
 ## Testing

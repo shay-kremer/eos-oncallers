@@ -1,3 +1,4 @@
+import 'express-async-errors';
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
@@ -76,6 +77,10 @@ export function createApp() {
 
   app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     logger.error({ err }, 'Unhandled error');
+    if (err.constructor?.name === 'PrismaClientInitializationError' || err.message?.includes("Can't reach database")) {
+      res.status(503).json({ error: 'Database unavailable. Ensure Docker is running: docker compose up -d postgres' });
+      return;
+    }
     res.status(500).json({ error: 'Internal server error' });
   });
 

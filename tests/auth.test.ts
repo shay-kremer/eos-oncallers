@@ -65,6 +65,38 @@ describe('Auth API', () => {
 
       expect(res.status).toBe(401);
     });
+
+    it('should return token and user on valid credentials', async () => {
+      const bcrypt = await import('bcryptjs');
+      const hash = await bcrypt.hash('admin123!', 12);
+      db.user.findUnique.mockResolvedValue({
+        id: 'user-admin', email: 'admin@oncall.local', name: 'Admin User', role: 'ADMIN', passwordHash: hash,
+      });
+
+      const res = await request(app)
+        .post('/api/auth/login')
+        .send({ email: 'admin@oncall.local', password: 'admin123!' });
+
+      expect(res.status).toBe(200);
+      expect(res.body.token).toBeDefined();
+      expect(res.body.user.email).toBe('admin@oncall.local');
+      expect(res.body.user.role).toBe('ADMIN');
+      expect(res.body.user.name).toBe('Admin User');
+    });
+
+    it('should return 503 when database is unreachable', async () => {
+      const dbError = new Error("Can't reach database server at `localhost:5432`");
+      (dbError as any).constructor = { name: 'PrismaClientInitializationError' };
+      Object.defineProperty(dbError, 'constructor', { value: { name: 'PrismaClientInitializationError' } });
+      db.user.findUnique.mockRejectedValue(dbError);
+
+      const res = await request(app)
+        .post('/api/auth/login')
+        .send({ email: 'admin@oncall.local', password: 'admin123!' });
+
+      expect(res.status).toBe(503);
+      expect(res.body.error).toContain('Database unavailable');
+    });
   });
 
   describe('GET /api/auth/me', () => {
