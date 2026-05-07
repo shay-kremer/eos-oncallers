@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: eos-oncallers
+  namespace: noc-tools
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: eos-oncallers
