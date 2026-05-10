@@ -1,13 +1,5 @@
-import { getConfig } from '../../utils/config';
 import { logger } from '../../utils/logger';
-
-interface IncidentPayload {
-  id: string;
-  title: string;
-  severity: string;
-  urgency: string;
-  service: { name: string };
-}
+import { IncidentPayload } from '../../types';
 
 export async function sendWebhookNotification(url: string, incident: IncidentPayload): Promise<void> {
   const payload = {
@@ -33,15 +25,4 @@ export async function sendWebhookNotification(url: string, incident: IncidentPay
   }
 
   logger.info({ url, incidentId: incident.id }, 'Webhook notification sent');
-}
-
-export async function sendAwsWebhook(incident: IncidentPayload): Promise<void> {
-  const config = getConfig();
-
-  if (!config.AWS_WEBHOOK_URL) {
-    logger.info({ incidentId: incident.id }, '[MOCK] AWS webhook (no URL configured)');
-    return;
-  }
-
-  await sendWebhookNotification(config.AWS_WEBHOOK_URL, incident);
 }
