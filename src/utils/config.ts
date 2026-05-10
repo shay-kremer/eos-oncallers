@@ -3,9 +3,9 @@ import { z } from 'zod';
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().default(3000),
-  DATABASE_URL: z.string().default('postgresql://oncall:oncall@localhost:5432/oncall'),
-  REDIS_URL: z.string().default('redis://localhost:6379'),
-  JWT_SECRET: z.string().default('dev-secret-change-in-production'),
+  DATABASE_URL: z.string(),
+  REDIS_URL: z.string().optional(),
+  JWT_SECRET: z.string().min(16),
   JWT_EXPIRES_IN: z.string().default('24h'),
   SLACK_BOT_TOKEN: z.string().optional(),
   SLACK_SIGNING_SECRET: z.string().optional(),
