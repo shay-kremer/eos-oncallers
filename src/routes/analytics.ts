@@ -16,22 +16,12 @@ router.get('/summary', async (_req: Request, res: Response) => {
     incidentsByStatus,
     incidentsBySeverity,
     recentIncidents,
-    avgAckTime,
-    avgResolveTime,
     incidentsByService,
   ] = await Promise.all([
     db.incident.count(),
     db.incident.groupBy({ by: ['status'], _count: true }),
     db.incident.groupBy({ by: ['severity'], _count: true }),
     db.incident.count({ where: { createdAt: { gte: sevenDaysAgo } } }),
-    db.incident.aggregate({
-      where: { acknowledgedAt: { not: null }, createdAt: { gte: thirtyDaysAgo } },
-      _avg: { number: true },
-    }),
-    db.incident.aggregate({
-      where: { resolvedAt: { not: null }, createdAt: { gte: thirtyDaysAgo } },
-      _avg: { number: true },
-    }),
     db.incident.groupBy({
       by: ['serviceId'],
       _count: true,
@@ -41,7 +31,6 @@ router.get('/summary', async (_req: Request, res: Response) => {
     }),
   ]);
 
-  // Calculate avg ack/resolve times from raw data
   const ackedIncidents = await db.incident.findMany({
     where: { acknowledgedAt: { not: null }, createdAt: { gte: thirtyDaysAgo } },
     select: { createdAt: true, acknowledgedAt: true },
@@ -61,7 +50,6 @@ router.get('/summary', async (_req: Request, res: Response) => {
     ? resolvedIncidents.reduce((sum, i) => sum + (new Date(i.resolvedAt!).getTime() - new Date(i.createdAt).getTime()) / 60000, 0) / resolvedIncidents.length
     : null;
 
-  // Get service names for the by-service breakdown
   const serviceIds = incidentsByService.map(s => s.serviceId);
   const services = serviceIds.length > 0
     ? await db.service.findMany({ where: { id: { in: serviceIds } }, select: { id: true, name: true } })

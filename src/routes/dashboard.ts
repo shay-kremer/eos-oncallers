@@ -44,7 +44,6 @@ router.get('/summary', async (_req: Request, res: Response) => {
     else if (group.status === 'RESOLVED') incidents.resolved = count;
   }
 
-  // Only expose integration key in development
   let demoIntegrationKey: string | null = null;
   if (process.env.NODE_ENV === 'development') {
     const integration = await db.serviceIntegration.findFirst({
