@@ -1,13 +1,6 @@
 import { getConfig } from '../../utils/config';
 import { logger } from '../../utils/logger';
-
-interface IncidentPayload {
-  id: string;
-  title: string;
-  severity: string;
-  urgency: string;
-  service: { name: string };
-}
+import { IncidentPayload } from '../../types';
 
 export async function sendWebhookNotification(url: string, incident: IncidentPayload): Promise<void> {
   const payload = {
