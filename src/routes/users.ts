@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
+import { Prisma } from '@prisma/client';
 import { getDb } from '../utils/database';
 import { authenticate, authorize } from '../middleware/auth';
 import { UserRole } from '../types';
@@ -12,7 +13,7 @@ router.get('/', async (req: Request, res: Response) => {
   const db = getDb();
   const { search, role, team } = req.query;
 
-  const where: any = {};
+  const where: Prisma.UserWhereInput = {};
   if (search && typeof search === 'string') {
     const s = search.trim();
     where.OR = [
@@ -20,8 +21,8 @@ router.get('/', async (req: Request, res: Response) => {
       { email: { contains: s, mode: 'insensitive' } },
     ];
   }
-  if (role && typeof role === 'string') {
-    where.role = role;
+  if (role && typeof role === 'string' && Object.values(UserRole).includes(role as UserRole)) {
+    where.role = role as UserRole;
   }
   if (team && typeof team === 'string') {
     where.teamMemberships = { some: { teamId: team } };

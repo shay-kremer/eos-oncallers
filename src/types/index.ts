@@ -6,38 +6,12 @@ export interface JwtPayload {
   role: UserRole;
 }
 
-export interface PaginationParams {
-  page: number;
-  limit: number;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-}
-
-export interface CreateIncidentPayload {
+export interface IncidentPayload {
+  id: string;
   title: string;
-  description?: string;
-  serviceId: string;
-  urgency?: IncidentUrgency;
-  severity?: AlertSeverity;
-  dedupKey?: string;
-}
-
-export interface IncomingWebhookEvent {
-  routingKey: string;
-  eventAction: 'trigger' | 'acknowledge' | 'resolve';
-  dedupKey?: string;
-  payload: {
-    summary: string;
-    source?: string;
-    severity?: AlertSeverity;
-    details?: Record<string, unknown>;
-  };
+  severity: string;
+  urgency: string;
+  service: { name: string };
 }
 
 export { UserRole, IncidentStatus, IncidentUrgency, AlertSeverity, NotificationMethod };
