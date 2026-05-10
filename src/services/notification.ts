@@ -3,6 +3,7 @@ import { logger } from '../utils/logger';
 import { sendSlackNotification } from '../integrations/slack';
 import { sendSmsNotification, sendPhoneNotification } from '../integrations/twilio';
 import { sendWebhookNotification } from '../integrations/webhook';
+import { IncidentPayload } from '../types';
 
 export async function notifyIncident(incidentId: string): Promise<void> {
   const db = getDb();
@@ -97,7 +98,7 @@ async function resolveScheduleOncall(scheduleId: string): Promise<string | null>
 async function dispatchNotification(
   method: string,
   contactDetail: string,
-  incident: { id: string; title: string; severity: string; urgency: string; service: { name: string } }
+  incident: IncidentPayload
 ): Promise<void> {
   const message = `[${incident.severity}] ${incident.title} - Service: ${incident.service.name} (Incident #${incident.id.slice(0, 8)})`;
 

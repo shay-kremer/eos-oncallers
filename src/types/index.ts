@@ -28,6 +28,14 @@ export interface CreateIncidentPayload {
   dedupKey?: string;
 }
 
+export interface IncidentPayload {
+  id: string;
+  title: string;
+  severity: string;
+  urgency: string;
+  service: { name: string };
+}
+
 export interface IncomingWebhookEvent {
   routingKey: string;
   eventAction: 'trigger' | 'acknowledge' | 'resolve';
