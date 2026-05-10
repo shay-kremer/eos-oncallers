@@ -3,6 +3,29 @@ import { z } from "zod";
 import { getDb } from "../utils/database";
 import { authenticate, authorize } from "../middleware/auth";
 
+interface ScheduleOverrideForOnCall {
+  startTime: Date;
+  endTime: Date;
+  user: { id: string; name: string };
+}
+
+interface ScheduleMemberForOnCall {
+  position: number;
+  user: { id: string; name: string };
+}
+
+interface ScheduleLayerForOnCall {
+  name: string;
+  rotationType: string;
+  startDate: Date;
+  members: ScheduleMemberForOnCall[];
+}
+
+interface ScheduleForOnCall {
+  layers: ScheduleLayerForOnCall[];
+  overrides?: ScheduleOverrideForOnCall[];
+}
+
 const router = Router();
 router.use(authenticate);
 
@@ -30,13 +53,13 @@ const createOverrideSchema = z.object({
   reason: z.string().optional(),
 });
 
-function computeOnCall(schedule: any, now: Date): { user: { id: string; name: string } | null; source: string; layer?: string } {
+function computeOnCall(schedule: ScheduleForOnCall, now: Date): { user: { id: string; name: string } | null; source: string; layer?: string } {
   if (!schedule.layers || schedule.layers.length === 0) {
     return { user: null, source: "none" };
   }
   if (schedule.overrides && schedule.overrides.length > 0) {
     const activeOverride = schedule.overrides.find(
-      (o: any) => new Date(o.startTime) <= now && new Date(o.endTime) >= now
+      (o) => new Date(o.startTime) <= now && new Date(o.endTime) >= now
     );
     if (activeOverride) {
       return { user: activeOverride.user, source: "override" };
@@ -79,12 +102,12 @@ router.get("/", async (_req: Request, res: Response) => {
     },
     orderBy: { name: "asc" },
   });
-  const result = schedules.map((s: any) => ({
+  const result = schedules.map((s) => ({
     id: s.id, name: s.name, description: s.description, timezone: s.timezone, createdAt: s.createdAt,
-    layers: s.layers.map((l: any) => ({
+    layers: s.layers.map((l) => ({
       id: l.id, name: l.name, priority: l.priority, rotationType: l.rotationType,
       handoffTime: l.handoffTime, handoffDay: l.handoffDay, startDate: l.startDate, endDate: l.endDate,
-      members: l.members.map((m: any) => ({ id: m.user.id, name: m.user.name, position: m.position })),
+      members: l.members.map((m) => ({ id: m.user.id, name: m.user.name, position: m.position })),
     })),
     currentOnCall: computeOnCall(s, now),
     memberCount: s.members.length,
