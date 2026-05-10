@@ -1,5 +1,6 @@
 import { getDb } from '../utils/database';
 import { logger } from '../utils/logger';
+import { computeRotationIndex } from '../utils/schedule';
 import { sendSlackNotification } from '../integrations/slack';
 import { sendSmsNotification, sendPhoneNotification } from '../integrations/twilio';
 import { sendWebhookNotification } from '../integrations/webhook';
@@ -86,11 +87,7 @@ async function resolveScheduleOncall(scheduleId: string): Promise<string | null>
   const topLayer = schedule.layers[0];
   if (topLayer.members.length === 0) return null;
 
-  const daysSinceStart = Math.floor((now.getTime() - topLayer.startDate.getTime()) / (1000 * 60 * 60 * 24));
-  const rotationIndex = topLayer.rotationType === 'daily'
-    ? daysSinceStart % topLayer.members.length
-    : Math.floor(daysSinceStart / 7) % topLayer.members.length;
-
+  const rotationIndex = computeRotationIndex(topLayer.rotationType, topLayer.members.length, topLayer.startDate, now);
   return topLayer.members[rotationIndex].userId;
 }
 
