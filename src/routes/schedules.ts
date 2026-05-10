@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import { z } from "zod";
 import { getDb } from "../utils/database";
 import { authenticate, authorize } from "../middleware/auth";
+import { computeRotationIndex } from "../utils/schedule";
 
 const router = Router();
 router.use(authenticate);
@@ -46,13 +47,7 @@ function computeOnCall(schedule: any, now: Date): { user: { id: string; name: st
   if (!topLayer.members || topLayer.members.length === 0) {
     return { user: null, source: "none" };
   }
-  const daysSinceStart = Math.floor((now.getTime() - new Date(topLayer.startDate).getTime()) / (1000 * 60 * 60 * 24));
-  let rotationIndex: number;
-  if (topLayer.rotationType === "daily") {
-    rotationIndex = daysSinceStart % topLayer.members.length;
-  } else {
-    rotationIndex = Math.floor(daysSinceStart / 7) % topLayer.members.length;
-  }
+  const rotationIndex = computeRotationIndex(topLayer.rotationType, topLayer.members.length, new Date(topLayer.startDate), now);
   const currentMember = topLayer.members[rotationIndex];
   return {
     user: { id: currentMember.user.id, name: currentMember.user.name },
@@ -168,10 +163,7 @@ router.get("/:id/oncall", async (req: Request, res: Response) => {
   if (!schedule || schedule.layers.length === 0) { res.json({ oncall: null, source: "none" }); return; }
   const topLayer = schedule.layers[0];
   if (topLayer.members.length === 0) { res.json({ oncall: null, source: "none" }); return; }
-  const daysSinceStart = Math.floor((now.getTime() - topLayer.startDate.getTime()) / (1000 * 60 * 60 * 24));
-  let rotationIndex: number;
-  if (topLayer.rotationType === "daily") { rotationIndex = daysSinceStart % topLayer.members.length; }
-  else { rotationIndex = Math.floor(daysSinceStart / 7) % topLayer.members.length; }
+  const rotationIndex = computeRotationIndex(topLayer.rotationType, topLayer.members.length, topLayer.startDate, now);
   const currentMember = topLayer.members[rotationIndex];
   res.json({ oncall: { id: currentMember.user.id, name: currentMember.user.name, email: currentMember.user.email }, source: "schedule", layer: topLayer.name });
 });

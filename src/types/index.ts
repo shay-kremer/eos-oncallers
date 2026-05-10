@@ -6,5 +6,12 @@ export interface JwtPayload {
   role: UserRole;
 }
 
+export interface IncidentPayload {
+  id: string;
+  title: string;
+  severity: string;
+  urgency: string;
+  service: { name: string };
+}
 
 export { UserRole, IncidentStatus, IncidentUrgency, AlertSeverity, NotificationMethod };
