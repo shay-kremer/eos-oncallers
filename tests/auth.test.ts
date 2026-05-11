@@ -106,7 +106,7 @@ describe('Auth API', () => {
     });
 
     it('should return user profile with valid token', async () => {
-      const token = jwt.sign({ userId: 'user-1', email: 'test@test.com', role: 'USER' }, 'test-secret');
+      const token = jwt.sign({ userId: 'user-1', email: 'test@test.com', role: 'USER' }, process.env.JWT_SECRET!);
       db.user.findUnique.mockResolvedValue({
         id: 'user-1', email: 'test@test.com', name: 'Test', role: 'USER', phone: null, slackUserId: null,
       });
