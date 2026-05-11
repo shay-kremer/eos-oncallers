@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 const app = createApp();
 const db = getDb() as any;
 
-const adminToken = jwt.sign({ userId: 'admin-1', email: 'admin@test.com', role: 'ADMIN' }, 'test-secret');
+const adminToken = jwt.sign({ userId: 'admin-1', email: 'admin@test.com', role: 'ADMIN' }, process.env.JWT_SECRET!);
 
 describe('Schedules API', () => {
   beforeEach(() => {
