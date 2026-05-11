@@ -79,7 +79,11 @@ jobs:
         run: |
           kubectl apply -f k8s/namespace.yaml
           kubectl apply -f k8s/serviceaccount.yaml
+          kubectl apply -f k8s/postgres.yaml
+          kubectl apply -f k8s/redis.yaml
           kubectl apply -f k8s/external-secret.yaml
+          # Wait for postgres to be ready before deploying app
+          kubectl rollout status statefulset/eos-oncallers-postgres -n ${{ env.K8S_NAMESPACE }} --timeout=120s || true
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
           kubectl apply -f k8s/hpa.yaml
