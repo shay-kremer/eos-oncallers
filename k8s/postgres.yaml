@@ -1,0 +1,105 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: eos-oncallers-postgres-credentials
+  namespace: noc-tools
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: aws-secrets-manager
+    kind: ClusterSecretStore
+  target:
+    name: eos-oncallers-postgres-credentials
+    creationPolicy: Owner
+  data:
+    - secretKey: POSTGRES_PASSWORD
+      remoteRef:
+        key: noc/eos-oncallers
+        property: pg_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eos-oncallers-postgres
+  namespace: noc-tools
+  labels:
+    app: eos-oncallers-postgres
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: eos-oncallers-postgres
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: eos-oncallers-postgres
+  namespace: noc-tools
+  labels:
+    app: eos-oncallers-postgres
+spec:
+  serviceName: eos-oncallers-postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eos-oncallers-postgres
+  template:
+    metadata:
+      labels:
+        app: eos-oncallers-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: oncall
+            - name: POSTGRES_DB
+              value: oncall
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: eos-oncallers-postgres-credentials
+                  key: POSTGRES_PASSWORD
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - oncall
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - oncall
+            initialDelaySeconds: 5
+            periodSeconds: 5
+  volumeClaimTemplates:
+    - metadata:
+        name: pgdata
+      spec:
+        storageClassName: gp2
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
