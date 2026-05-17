@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import { Prisma } from '@prisma/client';
+import { Prisma, IncidentStatus } from '@prisma/client';
 import { getDb } from '../utils/database';
 import { authenticate } from '../middleware/auth';
-import { IncidentUrgency, AlertSeverity, IncidentStatus } from '../types';
+import { IncidentUrgency, AlertSeverity } from '../types';
 import { notifyIncident } from '../services/notification';
 
 const router = Router();
