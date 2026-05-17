@@ -1,8 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
+import { Prisma } from '@prisma/client';
 import { getDb } from '../utils/database';
 import { authenticate } from '../middleware/auth';
-import { IncidentUrgency, AlertSeverity } from '../types';
+import { IncidentUrgency, AlertSeverity, IncidentStatus } from '../types';
 import { notifyIncident } from '../services/notification';
 
 const router = Router();
@@ -23,10 +24,10 @@ router.get('/', async (req: Request, res: Response) => {
   const serviceId = req.query.serviceId as string | undefined;
   const urgency = req.query.urgency as string | undefined;
 
-  const where: Record<string, unknown> = {};
-  if (status) where.status = status;
+  const where: Prisma.IncidentWhereInput = {};
+  if (status) where.status = status as IncidentStatus;
   if (serviceId) where.serviceId = serviceId;
-  if (urgency) where.urgency = urgency;
+  if (urgency) where.urgency = urgency as IncidentUrgency;
 
   const incidents = await db.incident.findMany({
     where,
