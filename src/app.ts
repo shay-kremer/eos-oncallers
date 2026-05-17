@@ -62,15 +62,12 @@ export function createApp() {
   app.use('/api/activity-log', activityLogRoutes);
   app.use('/api/settings', settingsRoutes);
 
-  // Serve static dashboard UI
   app.use(express.static(path.join(__dirname, 'public')));
 
-  // SPA fallback - serve index.html for root
   app.get('/', (_req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
-  // 404 for unmatched API routes
   app.use('/api/*', (_req, res) => {
     res.status(404).json({ error: 'Not found' });
   });

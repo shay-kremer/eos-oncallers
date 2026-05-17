@@ -267,7 +267,6 @@ export async function importPagerDuty(exportPath: string): Promise<{
   };
 }
 
-// CLI entrypoint
 const isMain = process.argv[1]?.includes('import-pagerduty');
 if (isMain) {
   const exportPath = process.argv[2] || path.resolve(__dirname, '../../data/pagerduty-export.json');

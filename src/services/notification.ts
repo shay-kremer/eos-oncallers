@@ -90,8 +90,5 @@ async function dispatchNotification(
     case 'WEBHOOK':
       await sendWebhookNotification(contactDetail, incident);
       break;
-    case 'EMAIL':
-      logger.info({ method, contactDetail }, 'Email notification (not implemented - use webhook)');
-      break;
   }
 }
