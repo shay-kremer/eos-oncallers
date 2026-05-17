@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import { z } from "zod";
 import { getDb } from "../utils/database";
 import { authenticate, authorize } from "../middleware/auth";
-import { computeRotationIndex } from "../utils/schedule";
+import { computeRotationIndex, resolveScheduleOncall } from "../utils/schedule";
 
 interface ScheduleOverrideForOnCall {
   startTime: Date;
@@ -172,23 +172,11 @@ router.post("/:id/overrides", authenticate, async (req: Request, res: Response) 
 router.get("/:id/oncall", async (req: Request, res: Response) => {
   const db = getDb();
   const scheduleId = req.params.id as string;
-  const now = new Date();
-  const override = await db.scheduleOverride.findFirst({
-    where: { scheduleId, startTime: { lte: now }, endTime: { gte: now } },
-    include: { user: { select: { id: true, name: true, email: true } } },
-    orderBy: { startTime: "desc" },
-  });
-  if (override) { res.json({ oncall: override.user, source: "override" }); return; }
-  const schedule = await db.schedule.findUnique({
-    where: { id: scheduleId },
-    include: { layers: { include: { members: { include: { user: true }, orderBy: { position: "asc" } } }, orderBy: { priority: "desc" } } },
-  });
-  if (!schedule || schedule.layers.length === 0) { res.json({ oncall: null, source: "none" }); return; }
-  const topLayer = schedule.layers[0];
-  if (topLayer.members.length === 0) { res.json({ oncall: null, source: "none" }); return; }
-  const rotationIndex = computeRotationIndex(topLayer.rotationType, topLayer.members.length, topLayer.startDate, now);
-  const currentMember = topLayer.members[rotationIndex];
-  res.json({ oncall: { id: currentMember.user.id, name: currentMember.user.name, email: currentMember.user.email }, source: "schedule", layer: topLayer.name });
+  const resolution = await resolveScheduleOncall(scheduleId);
+  if (!resolution) { res.json({ oncall: null, source: "none" }); return; }
+  const user = await db.user.findUnique({ where: { id: resolution.userId }, select: { id: true, name: true, email: true } });
+  if (!user) { res.json({ oncall: null, source: "none" }); return; }
+  res.json({ oncall: user, source: resolution.source, ...(resolution.layerName ? { layer: resolution.layerName } : {}) });
 });
 
 export default router;
