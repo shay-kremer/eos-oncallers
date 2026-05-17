@@ -1,4 +1,4 @@
-import { UserRole, IncidentStatus, IncidentUrgency, AlertSeverity, NotificationMethod } from '@prisma/client';
+import { UserRole, IncidentUrgency, AlertSeverity } from '@prisma/client';
 
 export interface JwtPayload {
   userId: string;
@@ -14,4 +14,4 @@ export interface IncidentPayload {
   service: { name: string };
 }
 
-export { UserRole, IncidentStatus, IncidentUrgency, AlertSeverity, NotificationMethod };
+export { UserRole, IncidentUrgency, AlertSeverity };
