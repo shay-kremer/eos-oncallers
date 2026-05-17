@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import { Prisma } from '@prisma/client';
 import { getDb } from '../utils/database';
 import { authenticate } from '../middleware/auth';
 
@@ -11,7 +12,7 @@ router.get('/', async (req: Request, res: Response) => {
   const offset = parseInt(req.query.offset as string) || 0;
   const resource = req.query.resource as string | undefined;
 
-  const where: Record<string, unknown> = {};
+  const where: Prisma.ActivityLogWhereInput = {};
   if (resource) where.resource = resource;
 
   const [logs, total] = await Promise.all([
