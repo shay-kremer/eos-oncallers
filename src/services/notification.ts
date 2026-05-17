@@ -1,6 +1,6 @@
 import { getDb } from '../utils/database';
 import { logger } from '../utils/logger';
-import { computeRotationIndex } from '../utils/schedule';
+import { resolveScheduleOncall } from '../utils/schedule';
 import { sendSlackNotification } from '../integrations/slack';
 import { sendSmsNotification, sendPhoneNotification } from '../integrations/twilio';
 import { sendWebhookNotification } from '../integrations/webhook';
@@ -41,7 +41,7 @@ export async function notifyIncident(incidentId: string): Promise<void> {
       userIds.push(target.targetId);
     } else if (target.targetType === 'SCHEDULE') {
       const oncall = await resolveScheduleOncall(target.targetId);
-      if (oncall) userIds.push(oncall);
+      if (oncall) userIds.push(oncall.userId);
     }
   }
 
@@ -68,28 +68,6 @@ export async function notifyIncident(incidentId: string): Promise<void> {
   }
 
   logger.info({ incidentId, notified: userIds.length }, 'Incident notifications sent');
-}
-
-async function resolveScheduleOncall(scheduleId: string): Promise<string | null> {
-  const db = getDb();
-  const now = new Date();
-
-  const override = await db.scheduleOverride.findFirst({
-    where: { scheduleId, startTime: { lte: now }, endTime: { gte: now } },
-  });
-  if (override) return override.userId;
-
-  const schedule = await db.schedule.findUnique({
-    where: { id: scheduleId },
-    include: { layers: { include: { members: { orderBy: { position: 'asc' } } }, orderBy: { priority: 'desc' } } },
-  });
-
-  if (!schedule || schedule.layers.length === 0) return null;
-  const topLayer = schedule.layers[0];
-  if (topLayer.members.length === 0) return null;
-
-  const rotationIndex = computeRotationIndex(topLayer.rotationType, topLayer.members.length, topLayer.startDate, now);
-  return topLayer.members[rotationIndex].userId;
 }
 
 async function dispatchNotification(

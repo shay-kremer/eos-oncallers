@@ -1,5 +1,10 @@
 import { getConfig } from '../../utils/config';
 import { logger } from '../../utils/logger';
+import { Config } from '../../utils/config';
+
+function twilioAuth(config: Config): string {
+  return Buffer.from(`${config.TWILIO_ACCOUNT_SID}:${config.TWILIO_AUTH_TOKEN}`).toString('base64');
+}
 
 export async function sendSmsNotification(to: string, message: string): Promise<void> {
   const config = getConfig();
@@ -10,7 +15,7 @@ export async function sendSmsNotification(to: string, message: string): Promise<
   }
 
   const url = `https://api.twilio.com/2010-04-01/Accounts/${config.TWILIO_ACCOUNT_SID}/Messages.json`;
-  const auth = Buffer.from(`${config.TWILIO_ACCOUNT_SID}:${config.TWILIO_AUTH_TOKEN}`).toString('base64');
+  const auth = twilioAuth(config);
 
   const body = new URLSearchParams({
     To: to,
@@ -40,7 +45,7 @@ export async function sendPhoneNotification(to: string, message: string): Promis
   }
 
   const url = `https://api.twilio.com/2010-04-01/Accounts/${config.TWILIO_ACCOUNT_SID}/Calls.json`;
-  const auth = Buffer.from(`${config.TWILIO_ACCOUNT_SID}:${config.TWILIO_AUTH_TOKEN}`).toString('base64');
+  const auth = twilioAuth(config);
 
   const twiml = `<Response><Say>${message}</Say><Pause length="2"/><Say>Press 1 to acknowledge. Press 2 to escalate.</Say></Response>`;
   const body = new URLSearchParams({
